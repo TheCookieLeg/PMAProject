@@ -3,5 +3,10 @@ public class Main {
     {
         System.out.println("Hello, World!");
         System.out.println("I'm gonna cry");
+
+    }
+
+    public void FuckGit(){
+
     }
 }

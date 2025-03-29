@@ -13,9 +13,9 @@ import java.awt.event.ActionEvent;
 public class Main {
     public static Map<String, ChoiceClass> storyScenes = new HashMap<String, ChoiceClass>();
 
-    public static ChoiceClass transistion = new ChoiceClass("", "", "", "");
     public static boolean isLastSentence = false;
     private static ChoiceClass currentScene;
+    private static int currentRoom = 0;
 
     private static JLabel storyText = new JLabel("Story Text");
     private static JButton choiceOne = new JButton("Choice 1");
@@ -31,16 +31,42 @@ public class Main {
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setSize(1920, 1080);
 
+
+
                 Container pane = frame.getContentPane();
 
+                GroupLayout layout = new GroupLayout(pane);
 
-                pane.add(storyText, BorderLayout.PAGE_START);
-                pane.add(choiceOne, BorderLayout.LINE_START);
-                pane.add(choiceTwo, BorderLayout.CENTER);
-                pane.add(choiceThree, BorderLayout.LINE_END);
+                pane.setLayout(layout);
+
+
+
+                layout.setAutoCreateGaps(true);
+                layout.setAutoCreateContainerGaps(true);
+
+                layout.setHorizontalGroup(layout.createSequentialGroup()
+                        .addComponent(choiceOne)
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
+                                .addComponent(storyText)
+                                .addComponent(choiceTwo))
+                        .addComponent(choiceThree)
+                );
+
+                layout.setVerticalGroup(layout.createSequentialGroup()
+                        .addComponent(storyText)
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
+                                .addComponent(choiceOne)
+                                .addComponent(choiceTwo)
+                                .addComponent(choiceThree)));
+
+
+
+
+
 
                 frame.pack();
                 frame.setVisible(true);
+                frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
             }
         });
 
@@ -55,42 +81,6 @@ public class Main {
         System.out.println("Hello and welcome!");
         System.out.println("Please type which room you would like to go to");
 
-        //storyText.setText("Welcome to the story screen! Please type which room you would like to go to");
-
-        //choiceOne.setText("Room 1");
-
-
-        isLastSentence = true;
-        setChoiceOne(currentScene, 1);
-        /*choiceOne.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                storyText.setText("You did something!");
-                System.out.println("Button clicked");
-                ChooseRoom(0);
-            }
-        });*/
-
-        //choiceTwo.setText("Room 2");
-        /*choiceTwo.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                System.out.println("Button clicked");
-                ChooseRoom(1);
-            }
-        });*/
-      //  choiceThree.setText("Room 3");
-        /*choiceThree.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Button clicked");
-                ChooseRoom(2);
-            }
-        });*/
-
-
     }
 
 
@@ -100,28 +90,38 @@ public class Main {
 
 
 
-    public static void setChoiceOne(ChoiceClass scene, int roomNumber) {
+    public static boolean bool = true;
+
+   public static void setChoiceOne(ChoiceClass scene) {
+
+       bool = true;
+       choiceOne.addActionListener(new ActionListener() {
+           @Override
+           public void actionPerformed(ActionEvent e) {
+               if(bool) {
+                   currentScene = scene;
+                   UpdateText();
+                   System.out.println("Dialogue change");
+                   rooms.get(currentRoom).StartRoom();
+               }
+           }
+       });
+    }
+
+    public static void setChoiceOne(int scene) {
+
+        bool = false;
         choiceOne.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                    currentScene = scene;
-                    UpdateText();
-
-                if(isLastSentence && roomNumber != -1){
-                    ChooseRoom(roomNumber);
+                if(!bool) {
+                    System.out.println("Room change");
+                    currentRoom = scene;
+                    ChooseRoom(scene);
+                    rooms.get(currentRoom).StartRoom();
                     isLastSentence = false;
                 }
 
-            }
-        });
-
-    }
-
-   public static void setRoomChoiceOne(int scene) {
-        choiceOne.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ChooseRoom(scene);
             }
         });
     }
@@ -131,42 +131,75 @@ public class Main {
     }
 
 
-    public static void setChoiceTwo(ChoiceClass scene, int roomNumber) {
+    public static void setChoiceTwo(ChoiceClass scene) {
+
+        bool = true;
         choiceTwo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                currentScene = scene;
-                UpdateText();
+                if(bool) {
+                    currentScene = scene;
+                    UpdateText();
+                    rooms.get(currentRoom).StartRoom();
+                    System.out.println("Dialogue change");
+                }
+            }
+        });
+    }
 
-                if(isLastSentence && roomNumber != -1){
-                    ChooseRoom(roomNumber);
+    public static void setChoiceTwo(int scene) {
+
+        bool = false;
+        choiceTwo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(!bool) {
+                    System.out.println("Room change");
+                    ChooseRoom(scene);
+                    currentRoom = scene;
+                    rooms.get(currentRoom).StartRoom();
                     isLastSentence = false;
                 }
 
             }
         });
-
     }
     public static JButton getChoiceTwo() {
         return choiceTwo;
     }
 
-    public static void setChoiceThree(ChoiceClass scene, int roomNumber) {
+    public static void setChoiceThree(ChoiceClass scene) {
+
+        bool = true;
         choiceThree.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                currentScene = scene;
-                UpdateText();
+                if(bool) {
+                    currentScene = scene;
+                    UpdateText();
+                    rooms.get(currentRoom).StartRoom();
+                    System.out.println("Dialogue change");
+                }
+            }
+        });
+    }
 
+    public static void setChoiceThree(int scene) {
 
-                if(isLastSentence && roomNumber != -1){
-                    ChooseRoom(roomNumber);
+        bool = false;
+        choiceThree.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(!bool) {
+                    System.out.println("Room change");
+                    ChooseRoom(scene);
+                    currentRoom = scene;
+                    rooms.get(currentRoom).StartRoom();
                     isLastSentence = false;
                 }
 
             }
         });
-
     }
     public static JButton getChoiceThree() {
         return choiceThree;

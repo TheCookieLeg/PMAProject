@@ -4,4 +4,8 @@ public class Room {
     public void PlayRoom() {
 
     }
+
+    public void StartRoom() {
+
+    }
 }

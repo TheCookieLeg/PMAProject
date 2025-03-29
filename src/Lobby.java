@@ -13,7 +13,7 @@ public class Lobby extends Room {
 
         if(Main.getCurrentScene() == Main.storyScenes.get("Intro")){
             Main.isLastSentence = true;
-            Main.setChoiceOne(Main.storyScenes.get("Transistion"), 1);
+            Main.setChoiceOne(1);
         }
 
     }

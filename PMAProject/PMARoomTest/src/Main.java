@@ -24,6 +24,7 @@ public class Main {
 
     private static ArrayList<Room> rooms = new ArrayList<Room>();
 
+
     public static void main(String[] args) {
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {

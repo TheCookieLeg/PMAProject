@@ -1,9 +1,8 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class Lobby extends Room {
+public class Lobby implements Room {
 
-    //private Map<String, ChoiceClass> storyScenes = new HashMap<String, ChoiceClass>();
     public void PlayRoom() {
         Main.storyScenes.clear();
         Main.storyScenes.put("Intro", new ChoiceClass("Welcome to the story screen! Please type which room you would like to go to", "Room 1","Room 2", "Room 3"));
@@ -15,6 +14,10 @@ public class Lobby extends Room {
             Main.isLastSentence = true;
             Main.setChoiceOne(1);
         }
+
+    }
+
+    public void StartRoom(){
 
     }
 }

@@ -7,9 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Room1 extends Room {
-
-    //private Map<String, ChoiceClass> storyScenes = new HashMap<String, ChoiceClass>();
+public class Room1 implements Room {
 
 
     public void PlayRoom() {

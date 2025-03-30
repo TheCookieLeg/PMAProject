@@ -2,14 +2,12 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
 import javax.swing.*;
+import javax.swing.border.TitledBorder;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static Map<String, ChoiceClass> storyScenes = new HashMap<String, ChoiceClass>();
 
@@ -27,21 +25,94 @@ public class Main {
     public static void main(String[] args) {
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                JFrame frame = new JFrame("MainScreen");
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame.setSize(1920, 1080);
+                GameFrame frame = new GameFrame();
+                frame.setVisible(true);
+                frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                //JFrame frame = new JFrame("MainScreen");
+                /*frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.setSize(800, 600);
+
+                //Main panel
+                JPanel mainPanel = new JPanel();
+                mainPanel.setBorder(new TitledBorder("The Game"));
+                mainPanel.setLayout(new BorderLayout());
+                frame.add(mainPanel);
+
+                //Title panel
+                JPanel titlePanel = new JPanel();
+                titlePanel.setLayout(new GridBagLayout());
+                titlePanel.setBackground(Color.white);
+                JLabel titleLabel = new JLabel("The coolest game ever");
+                titlePanel.add(titleLabel);
+                titleLabel.setFont(new Font("Arial", Font.BOLD, 40));
+                mainPanel.add(titlePanel, BorderLayout.NORTH);
+
+                //Player Panel
+                JPanel playerStats = new JPanel();
+                playerStats.setBorder(new TitledBorder("Player Stats"));
+                playerStats.setLayout(new GridLayout(3, 1));
+                playerStats.add(new JTextField(50));
+                playerStats.add(new JTextField(50));
+                mainPanel.add(playerStats, BorderLayout.WEST);
 
 
+                //Dice Panel
+                JPanel dicePanel = new JPanel();
+                dicePanel.setBorder(new TitledBorder("Dice"));
+                dicePanel.setLayout(new GridLayout(3, 1));
+                dicePanel.add(new JTextField(50));
+                JButton diceButton = new JButton("Roll dice");
+                dicePanel.add(diceButton);
+                diceButton.setBackground(Color.RED);
+                dicePanel.add(new JTextField(50));
+                /*
+                JLabel diceLabel = new JLabel("Dice");
+                JButton diceButton = new JButton("Roll dice");
 
-                Container pane = frame.getContentPane();
+                dicePanel.add(diceLabel);
+                dicePanel.add(diceButton);
+                diceButton.setSize(200, 200);*/
+               // mainPanel.add(dicePanel, BorderLayout.EAST);
 
-                GroupLayout layout = new GroupLayout(pane);
+                //Story Panel
+                /*JPanel storyPanel = new JPanel();
+                storyPanel.setBorder(new TitledBorder("Story Text"));
+                storyText.setFont(new Font("Arial", Font.BOLD, 20));
+                storyPanel.setLayout(new GridBagLayout());*/
 
-                pane.setLayout(layout);
+                //GroupLayout layout = new GroupLayout(storyPanel);
+                //storyPanel.setLayout(layout);
 
 
+               /* GridBagConstraints c = new GridBagConstraints();
 
-                layout.setAutoCreateGaps(true);
+                c.gridx = 0;
+                c.gridy = 0;
+                c.gridwidth = 3;
+                c.insets = new Insets(10, 10, 10, 10);
+                c.anchor = GridBagConstraints.CENTER;
+                storyPanel.add(storyText, c);
+
+                c.gridy = 1;
+                c.gridwidth = 1;
+                c.anchor = GridBagConstraints.CENTER;
+                storyPanel.add(choiceOne, c);
+
+                c.gridx = 1;
+                c.anchor = GridBagConstraints.CENTER;
+                storyPanel.add(choiceTwo, c);
+
+                c.gridx = 2;
+                c.anchor = GridBagConstraints.CENTER;
+                storyPanel.add(choiceThree, c);
+
+                choiceOne.setFont(new Font("Arial", Font.BOLD, 20));
+                choiceTwo.setFont(new Font("Arial", Font.BOLD, 20));
+                choiceThree.setFont(new Font("Arial", Font.BOLD, 20));
+
+                mainPanel.add(storyPanel, BorderLayout.CENTER);
+
+                /*layout.setAutoCreateGaps(true);
                 layout.setAutoCreateContainerGaps(true);
 
                 layout.setHorizontalGroup(layout.createSequentialGroup()
@@ -57,16 +128,16 @@ public class Main {
                         .addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
                                 .addComponent(choiceOne)
                                 .addComponent(choiceTwo)
-                                .addComponent(choiceThree)));
+                                .addComponent(choiceThree)));*/
 
 
 
 
 
-
+/*
                 frame.pack();
                 frame.setVisible(true);
-                frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                frame.setExtendedState(JFrame.MAXIMIZED_BOTH);*/
             }
         });
 
@@ -76,8 +147,7 @@ public class Main {
 
         rooms.get(0).PlayRoom();
 
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
+
         System.out.println("Hello and welcome!");
         System.out.println("Please type which room you would like to go to");
 
@@ -88,11 +158,9 @@ public class Main {
         rooms.get(choice).PlayRoom();
     }
 
-
-
     public static boolean bool = true;
 
-   public static void setChoiceOne(ChoiceClass scene) {
+    public static void setChoiceOne(ChoiceClass scene) {
 
        bool = true;
        choiceOne.addActionListener(new ActionListener() {
@@ -203,6 +271,10 @@ public class Main {
     }
     public static JButton getChoiceThree() {
         return choiceThree;
+    }
+
+    public static JLabel getStoryText() {
+        return storyText;
     }
 
     public static void UpdateText() {

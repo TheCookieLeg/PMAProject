@@ -11,7 +11,6 @@ public class Lobby implements Room {
         if(Main.getCurrentScene() != null){Main.UpdateText();}
 
         if(Main.getCurrentScene() == Main.storyScenes.get("Intro")){
-            Main.isLastSentence = true;
             Main.setChoiceOne(1);
         }
 

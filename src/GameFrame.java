@@ -41,9 +41,8 @@ public class GameFrame extends JFrame {
         dicePanel.setBorder(new TitledBorder("Dice"));
         dicePanel.setLayout(new GridLayout(3, 1));
         dicePanel.add(new JTextField(50));
-        JButton diceButton = new JButton("Roll dice");
-        dicePanel.add(diceButton);
-        diceButton.setBackground(Color.RED);
+        dicePanel.add(Main.getDiceButton());
+        Main.getDiceButton().setBackground(Color.RED);
         dicePanel.add(new JTextField(50));
                 /*
                 JLabel diceLabel = new JLabel("Dice");

@@ -1,12 +1,18 @@
 public class ChoiceClass {
-    private String storyText;
+    protected String storyText;
     private String choice1text, choice2text, choice3text;
 
+    public  ChoiceClass() {}
     public ChoiceClass(String storyText,  String choice1text, String choice2text, String choice3text) {
         this.storyText = storyText;
         this.choice1text = choice1text;
         this.choice2text = choice2text;
         this.choice3text = choice3text;
+        Main.getDiceButton().setEnabled(false);
+    }
+
+    public ChoiceClass(String storyText) {
+        this.storyText = storyText;
     }
 
     public String getStoryText() {

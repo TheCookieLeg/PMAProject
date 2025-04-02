@@ -24,7 +24,7 @@ public class GameFrame extends JFrame {
         titlePanel.setBackground(Color.white);
         JLabel titleLabel = new JLabel("The coolest game ever");
         titlePanel.add(titleLabel);
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 40));
+        titleLabel.setFont(new Font("Ariel", Font.BOLD, 40));
         mainPanel.add(titlePanel, BorderLayout.NORTH);
 
         //Player Panel

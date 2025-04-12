@@ -4,11 +4,11 @@ import java.util.Random;
 
 public class Dice {
 
-    public static int Roll(int[] amount) {
+    public static int Roll(int amount) {
         int successes = 0;
         //Random rand = new Random();
         //return rand.nextInt(6) + 1;
-        for (int i = 0; i < amount.length + 1; i++) {
+        for (int i = 0; i < amount + 1; i++) {
             Random rand = new Random();
             int result = rand.nextInt(6) + 1;
             if (result > 4) {

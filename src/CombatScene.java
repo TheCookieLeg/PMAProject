@@ -2,10 +2,13 @@ import java.io.InvalidClassException;
 
 public class CombatScene extends ChoiceClass {
 
+    String combatText;
+    String enemyName;
     private int enemyHealth;
     private int enemyStrength;
     int damage;
-    public CombatScene(String combatText, int enemyHealth, int enemyStrength) {
+    public CombatScene(String enemyName, String combatText, int enemyHealth, int enemyStrength) {
+        this.enemyName = enemyName;
         super.storyText = combatText;
         Main.getDiceButton().setEnabled(true);
         this.enemyHealth = enemyHealth;
@@ -18,17 +21,18 @@ public class CombatScene extends ChoiceClass {
 
         if (enemySuccesses > playerSuccesses) {
             damage = enemySuccesses - playerSuccesses;
-            //Have a method here or in Player class for taking damage
-            //Write to the player how much damage they took
+            Player.takeDamage(damage);
+            combatText = "The " + enemyName + " hits you, dealing " + damage + " damage.";
         }
-        if (playerSuccesses > enemySuccesses) {
+        else if (playerSuccesses > enemySuccesses) {
             damage = playerSuccesses - enemySuccesses;
             enemyHealth -= damage;
-            //Write to the player how much damage they dealt
+            combatText = "You hit the " + enemyName + ", dealing " + damage + " damage.";
         }
         else {
-            damage = 1;
-            enemyHealth -= damage;
+            enemyHealth -= 1;
+            Player.takeDamage(1);
+            combatText = "Both you and the " + enemyName + " get a hit in, and you both take 1 damage.";
         }
     }
 }

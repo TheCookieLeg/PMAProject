@@ -2,14 +2,14 @@ import java.io.InvalidClassException;
 
 public class CombatScene extends ChoiceClass {
 
-    public int enemyHealth;
-    public int enemyStrength;
+    private int enemyHealth;
+    private int enemyStrength;
     int damage;
-    public CombatScene(String combatText) {
+    public CombatScene(String combatText, int enemyHealth, int enemyStrength) {
         super.storyText = combatText;
         Main.getDiceButton().setEnabled(true);
-
-
+        this.enemyHealth = enemyHealth;
+        this.enemyStrength = enemyStrength;
     }
 
     public void attack() {

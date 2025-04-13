@@ -16,7 +16,7 @@ public class Room1 implements Room {
         Main.storyScenes.put("Door", new ChoiceClass("Does it work now?","","",""));
         Main.storyScenes.put("Question", new ChoiceClass("Hello?","Yes","No","Stay silent"));
         Main.storyScenes.put("CombatScene1", new ChoiceClass("The orc lunches at you. Roll the dice!"));
-        Main.storyScenes.put("CombatScene2", new CombatScene("The orc lunches at you."));
+        Main.storyScenes.put("CombatScene2", new CombatScene("The orc lunches at you.", 5, 5));
         Main.setCurrentScene(Main.storyScenes.get("Enter Room"));
 
         if(Main.getCurrentScene() != null){Main.UpdateText();}

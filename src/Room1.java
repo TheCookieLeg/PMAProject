@@ -21,8 +21,6 @@ public class Room1 implements Room {
 
         if(Main.getCurrentScene() != null){Main.UpdateText();}
         System.out.println("Test");
-
-
     }
 
     public void StartRoom() {

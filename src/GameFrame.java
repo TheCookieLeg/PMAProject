@@ -7,10 +7,12 @@ import javax.swing.border.TitledBorder;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 public class GameFrame extends JFrame {
-
+    JLabel storyLabel;
+    GameFrame gameFrame;
     public GameFrame() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(800, 600);
+        gameFrame = this;
 
         //Main panel
         JPanel mainPanel = new JPanel();
@@ -92,7 +94,7 @@ public class GameFrame extends JFrame {
         c.gridwidth = 3;
         c.insets = new Insets(10, 10, 10, 10);
         c.anchor = GridBagConstraints.CENTER;
-        JLabel storyLabel = new JLabel("<html> <div style='width:500px;'> " + Main.getStoryText().getText() + "</div> </html>");
+        storyLabel = new JLabel("<html> <div style='width:500px;'> " + Main.getStoryText().getText() + "</div> </html>");
         storyLabel.setForeground(Color.WHITE);
         storyLabel.setFont(new Font("Ariel", Font.BOLD, 30));
         storyPanel.add(storyLabel, c);
@@ -128,6 +130,8 @@ public class GameFrame extends JFrame {
 
         mainPanel.add(storyPanel, BorderLayout.CENTER);
 
+
+
                 /*layout.setAutoCreateGaps(true);
                 layout.setAutoCreateContainerGaps(true);
 
@@ -146,5 +150,10 @@ public class GameFrame extends JFrame {
                                 .addComponent(choiceTwo)
                                 .addComponent(choiceThree)));*/
         this.pack();
+
+    }
+    public void refreshStoryLabel()
+    {
+        storyLabel.setText("<html> <div style='width:500px;'> " + Main.getStoryText().getText() + "</div> </html>");
     }
 }

@@ -114,6 +114,18 @@ public class GameFrame extends JFrame {
         Main.getChoiceTwo().setFont(new Font("Arial", Font.BOLD, 20));
         Main.getChoiceThree().setFont(new Font("Arial", Font.BOLD, 20));
 
+        ActionListener updateStoryText = new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                storyLabel.setText("<html> <div style='width:500px;'> " + Main.getStoryText().getText() + "</div> </html>");
+            }
+        };
+
+        Main.getChoiceOne().addActionListener(updateStoryText);
+        Main.getChoiceTwo().addActionListener(updateStoryText);
+        Main.getChoiceThree().addActionListener(updateStoryText);
+
         mainPanel.add(storyPanel, BorderLayout.CENTER);
 
                 /*layout.setAutoCreateGaps(true);
@@ -133,12 +145,6 @@ public class GameFrame extends JFrame {
                                 .addComponent(choiceOne)
                                 .addComponent(choiceTwo)
                                 .addComponent(choiceThree)));*/
-
-
-
-
-
-
         this.pack();
     }
 }

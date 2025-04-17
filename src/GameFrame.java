@@ -99,18 +99,22 @@ public class GameFrame extends JFrame {
         storyLabel.setFont(new Font("Ariel", Font.BOLD, 30));
         storyPanel.add(storyLabel, c);
 
+        // This panel is used to collect all buttons into one panel.
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setBackground(Color.DARK_GRAY);
+        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 0)); // spacing between buttons
+
+        // Add buttons to the sub-panel
+        buttonPanel.add(Main.getChoiceOne());
+        buttonPanel.add(Main.getChoiceTwo());
+        buttonPanel.add(Main.getChoiceThree());
+
+        // Add the sub-panel to the storyPanel
+        c.gridx = 0;
         c.gridy = 1;
-        c.gridwidth = 1;
+        c.gridwidth = 3;
         c.anchor = GridBagConstraints.CENTER;
-        storyPanel.add(Main.getChoiceOne(), c);
-
-        c.gridx = 1;
-        c.anchor = GridBagConstraints.CENTER;
-        storyPanel.add(Main.getChoiceTwo(), c);
-
-        c.gridx = 2;
-        c.anchor = GridBagConstraints.CENTER;
-        storyPanel.add(Main.getChoiceThree(), c);
+        storyPanel.add(buttonPanel, c);
 
         Main.getChoiceOne().setFont(new Font("Arial", Font.BOLD, 20));
         Main.getChoiceTwo().setFont(new Font("Arial", Font.BOLD, 20));

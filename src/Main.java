@@ -32,9 +32,16 @@ public class Main {
             }
         });
 
+        rooms.add(new FrontOfTheHouse());
         rooms.add(new Lobby());
-        rooms.add(new Room1());
-        rooms.add(new Room2());
+        rooms.add(new DinningRoom());
+        rooms.add(new Kitchen());
+        rooms.add(new UpstairsHallway());
+        rooms.add(new Bathroom());
+        rooms.add(new Bedroom());
+        rooms.add(new SecretBasement());
+        rooms.add(new PrisonCell());
+        rooms.add(new EndScene());
 
         rooms.get(0).PlayRoom();
 

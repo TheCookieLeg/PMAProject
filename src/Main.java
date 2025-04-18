@@ -21,11 +21,12 @@ public class Main {
 
     private static JButton diceButton = new JButton("Roll dice");
     private static ArrayList<Room> rooms = new ArrayList<Room>();
+    private static GameFrame frame;
 
     public static void main(String[] args)  {
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                GameFrame frame = new GameFrame();
+                frame = new GameFrame();
                 frame.setVisible(true);
                 frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
@@ -51,6 +52,7 @@ public class Main {
 
     public static void ChooseRoom(int choice) {
         rooms.get(choice).PlayRoom();
+        frame.refreshStoryLabel();
     }
 
     public static boolean bool = true;

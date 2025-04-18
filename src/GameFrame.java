@@ -7,10 +7,12 @@ import javax.swing.border.TitledBorder;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 public class GameFrame extends JFrame {
-
+    JLabel storyLabel;
+    GameFrame gameFrame;
     public GameFrame() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(800, 600);
+        gameFrame = this;
 
         //Main panel
         JPanel mainPanel = new JPanel();
@@ -21,29 +23,49 @@ public class GameFrame extends JFrame {
         //Title panel
         JPanel titlePanel = new JPanel();
         titlePanel.setLayout(new GridBagLayout());
-        titlePanel.setBackground(Color.white);
-        JLabel titleLabel = new JLabel("The coolest game ever");
+        titlePanel.setBackground(Color.darkGray);
+        JLabel titleLabel = new JLabel("Haunted Mansion with a Haunted Basement");
+        titleLabel.setForeground(Color.white);
         titlePanel.add(titleLabel);
         titleLabel.setFont(new Font("Ariel", Font.BOLD, 40));
         mainPanel.add(titlePanel, BorderLayout.NORTH);
 
         //Player Panel
         JPanel playerStats = new JPanel();
-        playerStats.setBorder(new TitledBorder("Player Stats"));
+        playerStats.setBackground(Color.darkGray);
+        playerStats.setBorder(new TitledBorder("<html> <font color=\"#ffffff\"> Player Stats </font> </html>"));
         playerStats.setLayout(new GridLayout(3, 1));
-        playerStats.add(new JTextField(50));
-        playerStats.add(new JTextField(50));
+        JTextField playerStatsField1 = new JTextField(50);
+        playerStatsField1.setBackground(Color.darkGray);
+        playerStatsField1.setEditable(false);
+        playerStats.add(playerStatsField1);
+
+        JTextField playerStatsField2 = new JTextField(50);
+        playerStatsField2.setBackground(Color.LIGHT_GRAY);
+        playerStats.add(playerStatsField2);
+
         mainPanel.add(playerStats, BorderLayout.WEST);
 
 
         //Dice Panel
         JPanel dicePanel = new JPanel();
-        dicePanel.setBorder(new TitledBorder("Dice"));
+        dicePanel.setBorder(new TitledBorder("<html> <font color=\"#ffffff\"> Dice </font> </html>"));
+        dicePanel.setBackground(Color.darkGray);
         dicePanel.setLayout(new GridLayout(3, 1));
-        dicePanel.add(new JTextField(50));
+
+        JTextField emptyDice = new JTextField(50);
+        emptyDice.setBackground(Color.darkGray);
+        emptyDice.setEditable(false);
+        dicePanel.add(emptyDice);
+
         dicePanel.add(Main.getDiceButton());
-        Main.getDiceButton().setBackground(Color.RED);
-        dicePanel.add(new JTextField(50));
+        Color color = new Color(150, 0, 0);
+        Main.getDiceButton().setBackground(color);
+
+        JTextField emptyDice2 = new JTextField(50);
+        emptyDice2.setBackground(Color.darkGray);
+        emptyDice2.setEditable(false);
+        dicePanel.add(emptyDice2);
                 /*
                 JLabel diceLabel = new JLabel("Dice");
                 JButton diceButton = new JButton("Roll dice");
@@ -55,8 +77,10 @@ public class GameFrame extends JFrame {
 
         //Story Panel
         JPanel storyPanel = new JPanel();
-        storyPanel.setBorder(new TitledBorder("Story Text"));
+        storyPanel.setBackground(Color.darkGray);
+        storyPanel.setBorder(new TitledBorder("<html> <font color = \"#ffffff\"> Story Text </font> </html>" ));
         Main.getStoryText().setFont(new Font("Arial", Font.BOLD, 20));
+
         storyPanel.setLayout(new GridBagLayout());
 
         //GroupLayout layout = new GroupLayout(storyPanel);
@@ -70,26 +94,47 @@ public class GameFrame extends JFrame {
         c.gridwidth = 3;
         c.insets = new Insets(10, 10, 10, 10);
         c.anchor = GridBagConstraints.CENTER;
-        storyPanel.add(Main.getStoryText(), c);
+        storyLabel = new JLabel("<html> <div style='width:500px;'> " + Main.getStoryText().getText() + "</div> </html>");
+        storyLabel.setForeground(Color.WHITE);
+        storyLabel.setFont(new Font("Ariel", Font.BOLD, 30));
+        storyPanel.add(storyLabel, c);
 
+        // This panel is used to collect all buttons into one panel.
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setBackground(Color.DARK_GRAY);
+        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 0)); // spacing between buttons
+
+        // Add buttons to the sub-panel
+        buttonPanel.add(Main.getChoiceOne());
+        buttonPanel.add(Main.getChoiceTwo());
+        buttonPanel.add(Main.getChoiceThree());
+
+        // Add the sub-panel to the storyPanel
+        c.gridx = 0;
         c.gridy = 1;
-        c.gridwidth = 1;
+        c.gridwidth = 3;
         c.anchor = GridBagConstraints.CENTER;
-        storyPanel.add(Main.getChoiceOne(), c);
-
-        c.gridx = 1;
-        c.anchor = GridBagConstraints.CENTER;
-        storyPanel.add(Main.getChoiceTwo(), c);
-
-        c.gridx = 2;
-        c.anchor = GridBagConstraints.CENTER;
-        storyPanel.add(Main.getChoiceThree(), c);
+        storyPanel.add(buttonPanel, c);
 
         Main.getChoiceOne().setFont(new Font("Arial", Font.BOLD, 20));
         Main.getChoiceTwo().setFont(new Font("Arial", Font.BOLD, 20));
         Main.getChoiceThree().setFont(new Font("Arial", Font.BOLD, 20));
 
+        ActionListener updateStoryText = new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                storyLabel.setText("<html> <div style='width:500px;'> " + Main.getStoryText().getText() + "</div> </html>");
+            }
+        };
+
+        Main.getChoiceOne().addActionListener(updateStoryText);
+        Main.getChoiceTwo().addActionListener(updateStoryText);
+        Main.getChoiceThree().addActionListener(updateStoryText);
+
         mainPanel.add(storyPanel, BorderLayout.CENTER);
+
+
 
                 /*layout.setAutoCreateGaps(true);
                 layout.setAutoCreateContainerGaps(true);
@@ -108,12 +153,11 @@ public class GameFrame extends JFrame {
                                 .addComponent(choiceOne)
                                 .addComponent(choiceTwo)
                                 .addComponent(choiceThree)));*/
-
-
-
-
-
-
         this.pack();
+
+    }
+    public void refreshStoryLabel()
+    {
+        storyLabel.setText("<html> <div style='width:500px;'> " + Main.getStoryText().getText() + "</div> </html>");
     }
 }

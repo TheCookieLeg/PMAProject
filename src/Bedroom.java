@@ -84,6 +84,9 @@ public class Bedroom implements Room{
         }
 
         if(Main.getCurrentScene() == Main.storyScenes.get("Completing the key")) {
+            if(!Main.items.contains("Sheath")){
+                Main.items.add("Sheath");
+            }
             Main.setChoiceOne(1);
             Main.setChoiceTwo(1);
             Main.setChoiceThree(1);

@@ -5,6 +5,8 @@ public class Lobby implements Room {
 
     private boolean beenInRoomBefore = false;
 
+    private boolean skeletonInvestigated = false;
+
     public void PlayRoom() {
         Main.storyScenes.clear();
         Main.storyScenes.put("Intro", new ChoiceClass("Welcome to the story screen! Please type which room you would like to go to", "Room 1","Room 2", "Room 3"));
@@ -39,26 +41,33 @@ public class Lobby implements Room {
 
     public void StartRoom(){
         if(Main.getCurrentScene() == Main.storyScenes.get("After Entering")) {
+
+            if(skeletonInvestigated) {
+
+            }
             Main.setChoiceOne(Main.storyScenes.get("Finding dagger"));
             Main.setChoiceTwo(2);
             Main.setChoiceThree(4);
 
             if(beenInRoomBefore){
                 Main.getCurrentScene().setStoryText("You find yourself back at the entrance of the room");
+
             }
             beenInRoomBefore = true;
         }
 
         if(Main.getCurrentScene() == Main.storyScenes.get("Finding dagger")) {
+            skeletonInvestigated = true;
             Main.setChoiceOne(Main.storyScenes.get("After Entering"));
             Main.setChoiceTwo(Main.storyScenes.get("Removing dagger"));
             Main.setChoiceThree(Main.storyScenes.get("Try waking him up"));
         }
 
         if(Main.getCurrentScene() == Main.storyScenes.get("Removing dagger")) {
-            Main.items.add("Dagger");
+            if(!Main.items.contains("Dagger")) {Main.items.add("Dagger");}
+
             Main.setChoiceOne(Main.storyScenes.get("Finding dagger"));
-            if(Main.items.contains("Sheath") && Main.items.contains("Crystal"))
+            if(Main.items.contains("Sheath") && Main.items.contains("Crystal") && Main.items.contains("Dagger"))
             {
                 Main.setChoiceTwo(Main.storyScenes.get("Placing dagger succesfully"));
             }

@@ -1,4 +1,9 @@
 public class UpstairsHallway implements Room{
+
+    private boolean beenInRoom = false;
+
+    private boolean comingFromBedroom = false;
+    private boolean comingFromBathroom = false;
     public void PlayRoom(){
         Main.storyScenes.clear();
         Main.storyScenes.put("Upstairs Hallway", new ChoiceClass("You walk up the stairs. Every step creaks under you. You should probably lose some weight. As you reach the top of the stairs, you find yourself in a hallway with a wall of pictures. To your left there is a door with a mysterious sound emanating from behind it. At the end of the hall way there is another door.",
@@ -22,6 +27,12 @@ public class UpstairsHallway implements Room{
             Main.setChoiceOne(5);
             Main.setChoiceTwo(Main.storyScenes.get("Infront of door"));
             Main.setChoiceThree(Main.storyScenes.get("Looking at pictures"));
+
+            if(beenInRoom){
+                Main.getCurrentScene().setStoryText("You find yourself back in the hallway.");
+            }
+
+            beenInRoom = true;
         }
 
         if(Main.getCurrentScene() == Main.storyScenes.get("Looking at pictures")) {

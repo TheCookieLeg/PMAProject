@@ -19,6 +19,8 @@ public class Kitchen implements Room {
         Main.setCurrentScene(Main.storyScenes.get("Entering kitchen"));
 
         if(Main.getCurrentScene() != null){Main.UpdateText();}
+
+        StartRoom();
     }
     public void StartRoom(){
         if(Main.getCurrentScene() == Main.storyScenes.get("Entering kitchen")) {

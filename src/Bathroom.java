@@ -17,6 +17,8 @@ public class Bathroom implements Room{
         Main.setCurrentScene(Main.storyScenes.get("Entering bathroom"));
 
         if(Main.getCurrentScene() != null){Main.UpdateText();}
+
+        StartRoom();
     }
     public void StartRoom(){
 

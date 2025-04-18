@@ -13,6 +13,8 @@ public class UpstairsHallway implements Room{
         Main.setCurrentScene(Main.storyScenes.get("Upstairs Hallway"));
 
         if(Main.getCurrentScene() != null){Main.UpdateText();}
+
+        StartRoom();
     }
     public void StartRoom(){
 

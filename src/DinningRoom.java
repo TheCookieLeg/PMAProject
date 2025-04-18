@@ -13,6 +13,8 @@ public class DinningRoom implements Room{
         Main.setCurrentScene(Main.storyScenes.get("After entering dinning room"));
 
         if(Main.getCurrentScene() != null){Main.UpdateText();}
+
+        StartRoom();
     }
     public void StartRoom(){
         if(Main.getCurrentScene() == Main.storyScenes.get("After entering dinning room")) {

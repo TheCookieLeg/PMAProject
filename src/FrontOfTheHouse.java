@@ -9,9 +9,12 @@ public class FrontOfTheHouse implements Room{
         Main.setCurrentScene(Main.storyScenes.get("Start"));
 
         if(Main.getCurrentScene() != null){Main.UpdateText();}
+
+        StartRoom();
     }
     public void StartRoom(){
         if(Main.getCurrentScene() == Main.storyScenes.get("Start")) {
+            System.out.println("Tjek");
             Main.setChoiceOne(Main.storyScenes.get("Standing in front of mansion"));
             Main.setChoiceTwo(Main.storyScenes.get("Standing in front of mansion"));
             Main.setChoiceThree(Main.storyScenes.get("Standing in front of mansion"));

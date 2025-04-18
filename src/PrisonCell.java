@@ -24,6 +24,8 @@ public class PrisonCell implements Room{
         Main.setCurrentScene(Main.storyScenes.get("Enter cell"));
 
         if(Main.getCurrentScene() != null){Main.UpdateText();}
+
+        StartRoom();
     }
     public void StartRoom(){
         if(Main.getCurrentScene() == Main.storyScenes.get("Enter cell")) {

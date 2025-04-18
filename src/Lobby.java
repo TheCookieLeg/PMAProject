@@ -31,6 +31,8 @@ public class Lobby implements Room {
             Main.setChoiceOne(1);
         }*/
 
+        StartRoom();
+
     }
 
     public void StartRoom(){

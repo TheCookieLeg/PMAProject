@@ -1,4 +1,4 @@
-﻿public class UpstairsHallway implements Room{
+public class UpstairsHallway implements Room{
     public void PlayRoom(){
         Main.storyScenes.clear();
         Main.storyScenes.put("Upstairs Hallway", new ChoiceClass("You walk up the stairs. Every step creaks under you. You should probably lose some weight. As you reach the top of the stairs, you find yourself in a hallway with a wall of pictures. To your left there is a door with a mysterious sound emanating from behind it. At the end of the hall way there is another door.",

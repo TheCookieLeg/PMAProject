@@ -1,4 +1,4 @@
-﻿public class PrisonCell implements Room{
+public class PrisonCell implements Room{
     public void PlayRoom(){
         Main.storyScenes.clear();
 

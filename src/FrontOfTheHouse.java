@@ -1,4 +1,4 @@
-﻿public class FrontOfTheHouse implements Room{
+public class FrontOfTheHouse implements Room{
 
     public void PlayRoom(){
         Main.storyScenes.clear();

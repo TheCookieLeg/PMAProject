@@ -1,4 +1,4 @@
-﻿public class Bathroom implements Room{
+public class Bathroom implements Room{
     public void PlayRoom(){
         Main.storyScenes.clear();
         Main.storyScenes.put("Entering bathroom", new ChoiceClass("You enter the bathroom. The noise you heard from outside the hallway faded as you entered, leaving the room silent. Seems you are starting to get delusional. Inside, there is a shower cabin, a sink beneath a huge mirror and a toilet.",

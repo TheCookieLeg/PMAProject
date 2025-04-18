@@ -1,4 +1,4 @@
-﻿public class Kitchen implements Room {
+public class Kitchen implements Room {
     public void PlayRoom(){
         Main.storyScenes.clear();
         Main.storyScenes.put("Entering kitchen", new ChoiceClass("You enter the kitchen. A rotten stench fills the air, almost bringing tears to your eyes. There are carcasses on all the tables, and the walls are smeared with blood. In the back of the room, a fridge is standing tall, untainted by the rest of the room. It stands out like a sore thumb compared to the rest of the room. A skeleton is sitting in front of it. Creepy.",

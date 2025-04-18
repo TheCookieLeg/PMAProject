@@ -1,4 +1,4 @@
-﻿public class SecretBasement implements Room{
+public class SecretBasement implements Room{
     public void PlayRoom(){
         Main.storyScenes.clear();
 

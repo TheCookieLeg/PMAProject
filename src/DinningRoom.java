@@ -1,4 +1,4 @@
-﻿public class DinningRoom implements Room{
+public class DinningRoom implements Room{
     public void PlayRoom(){
         Main.storyScenes.clear();
         Main.storyScenes.put("After entering dinning room", new ChoiceClass("You enter the dining room. A grand dining table stands in the middle, with room for ten. At the end of the table is a golden chair, with red padding, just like those movies you used to watch. There's plates and silverware set up for the entire table. Did you interrupt someone's dinner by accident? And if so, where did they go? Adjacent to the dining room is the kitchen door. A dark aura eminates from it.",

@@ -1,4 +1,4 @@
-﻿public class Bedroom implements Room{
+public class Bedroom implements Room{
     public void PlayRoom(){
         Main.storyScenes.clear();
         Main.storyScenes.put("Entering bedroom", new ChoiceClass("You enter the room. Total darkness. The light from the hallway is reflecting from some big rough shapes inside the room, but you can not determine what they are.",

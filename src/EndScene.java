@@ -1,4 +1,4 @@
-﻿public class EndScene implements Room{
+public class EndScene implements Room{
     public void PlayRoom(){
         Main.storyScenes.clear();
     }

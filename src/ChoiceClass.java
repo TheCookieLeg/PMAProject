@@ -18,6 +18,10 @@ public class ChoiceClass {
     public String getStoryText() {
         return storyText;
     }
+
+    public void setStoryText(String storyText) {
+        this.storyText = storyText;
+    }
     public String getChoice1text() {
         return choice1text;
     }

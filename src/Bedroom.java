@@ -26,7 +26,7 @@ public class Bedroom implements Room{
 
         if(Main.getCurrentScene() != null){Main.UpdateText();}
 
-        StartRoom();
+
     }
     public void StartRoom(){
         if(Main.getCurrentScene() == Main.storyScenes.get("Entering bedroom")) {

@@ -14,7 +14,7 @@ public class UpstairsHallway implements Room{
 
         if(Main.getCurrentScene() != null){Main.UpdateText();}
 
-        StartRoom();
+
     }
     public void StartRoom(){
 

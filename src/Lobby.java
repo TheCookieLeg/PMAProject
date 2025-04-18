@@ -3,6 +3,8 @@ import java.util.Map;
 
 public class Lobby implements Room {
 
+    private boolean beenInRoomBefore = false;
+
     public void PlayRoom() {
         Main.storyScenes.clear();
         Main.storyScenes.put("Intro", new ChoiceClass("Welcome to the story screen! Please type which room you would like to go to", "Room 1","Room 2", "Room 3"));
@@ -30,7 +32,7 @@ public class Lobby implements Room {
         /*if(Main.getCurrentScene() == Main.storyScenes.get("After Entering")){
             Main.setChoiceOne(1);
         }*/
-        StartRoom();
+
 
 
     }
@@ -40,6 +42,11 @@ public class Lobby implements Room {
             Main.setChoiceOne(Main.storyScenes.get("Finding dagger"));
             Main.setChoiceTwo(2);
             Main.setChoiceThree(4);
+
+            if(beenInRoomBefore){
+                Main.getCurrentScene().setStoryText("You find yourself back at the entrance of the room");
+            }
+            beenInRoomBefore = true;
         }
 
         if(Main.getCurrentScene() == Main.storyScenes.get("Finding dagger")) {
@@ -49,8 +56,16 @@ public class Lobby implements Room {
         }
 
         if(Main.getCurrentScene() == Main.storyScenes.get("Removing dagger")) {
+            Main.items.add("Dagger");
             Main.setChoiceOne(Main.storyScenes.get("Finding dagger"));
-            Main.setChoiceTwo(Main.storyScenes.get("Placing dagger"));
+            if(Main.items.contains("Sheath") && Main.items.contains("Crystal"))
+            {
+                Main.setChoiceTwo(Main.storyScenes.get("Placing dagger succesfully"));
+            }
+            else
+            {
+                Main.setChoiceTwo(Main.storyScenes.get("Placing dagger"));
+            }
             Main.setChoiceThree(Main.storyScenes.get("Investigating wall"));
         }
 

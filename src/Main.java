@@ -68,6 +68,7 @@ public class Main {
                    UpdateText();
                    System.out.println("Dialogue change");
                    rooms.get(currentRoom).StartRoom();
+                   frame.refreshStoryLabel();
                }
            }
        });
@@ -82,8 +83,9 @@ public class Main {
                 if(!bool) {
                     System.out.println("Room change");
                     currentRoom = scene;
+                    UpdateText();
                     ChooseRoom(scene);
-                    rooms.get(currentRoom).StartRoom();
+
                 }
 
             }
@@ -106,6 +108,7 @@ public class Main {
                     UpdateText();
                     rooms.get(currentRoom).StartRoom();
                     System.out.println("Dialogue change");
+                    frame.refreshStoryLabel();
                 }
             }
         });
@@ -121,7 +124,9 @@ public class Main {
                     System.out.println("Room change");
                     ChooseRoom(scene);
                     currentRoom = scene;
-                    rooms.get(currentRoom).StartRoom();
+                    UpdateText();
+
+
                 }
 
             }
@@ -142,6 +147,7 @@ public class Main {
                     UpdateText();
                     rooms.get(currentRoom).StartRoom();
                     System.out.println("Dialogue change");
+                    frame.refreshStoryLabel();
                 }
             }
         });
@@ -157,7 +163,8 @@ public class Main {
                     System.out.println("Room change");
                     ChooseRoom(scene);
                     currentRoom = scene;
-                    rooms.get(currentRoom).StartRoom();
+                    UpdateText();
+
                 }
 
             }

@@ -25,13 +25,13 @@ public class Lobby implements Room {
 
         Main.setCurrentScene(Main.storyScenes.get("After Entering"));
 
-        if(Main.getCurrentScene() != null){Main.UpdateText();}
+        //if(Main.getCurrentScene() != null){Main.UpdateText();}
 
         /*if(Main.getCurrentScene() == Main.storyScenes.get("After Entering")){
             Main.setChoiceOne(1);
         }*/
-
         StartRoom();
+
 
     }
 

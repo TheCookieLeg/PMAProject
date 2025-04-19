@@ -25,9 +25,11 @@ public class Lobby implements Room {
                 "","Continue",""));
         Main.storyScenes.put("Placing dagger succesfully", new ChoiceClass("With the sheath and the crystal attached, the dagger fits perfectly. It clicks, and the wall starts turning, revealing another room behind it. You slip in as it turns, and find yourself at the top of a stairway, leading down. The wall settles into place behind you. The dagger is stuck inside the indent, it no longer responds to anything you do. The only way is down.",
                 "","Continue",""));
+        Main.storyScenes.put("Confused Cultist Combat", new CombatScene("Confused cultist","Attack",10, 10, Main.storyScenes.get("After Entering")));
 
 
-        Main.setCurrentScene(Main.storyScenes.get("After Entering"));
+        //Main.setCurrentScene(Main.storyScenes.get("After Entering"));
+        Main.setCurrentScene(Main.storyScenes.get("Confused Cultist Combat"));
 
         //if(Main.getCurrentScene() != null){Main.UpdateText();}
 
@@ -40,6 +42,10 @@ public class Lobby implements Room {
     }
 
     public void StartRoom(){
+        if(Main.getCurrentScene() == Main.storyScenes.get("Confused Cultist Combat")){
+
+        }
+
         if(Main.getCurrentScene() == Main.storyScenes.get("After Entering")) {
 
             if(skeletonInvestigated) {

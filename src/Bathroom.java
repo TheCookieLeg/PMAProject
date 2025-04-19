@@ -14,6 +14,7 @@ public class Bathroom implements Room{
         Main.storyScenes.put("Mirror talking", new ChoiceClass("Hey dumb-dumb, your reflection quips. Finally found your way home, it states. You asks what it means by 'home' as you have never been here, and is actually investigating a case. The reflection tells you you should be investigating how you got so stupid. You tell the reflection that's really hurtful. It says you clearly haven't been hurt enough, since you are weird enough to be talking to a mirror. You suppress a tear and turn away from the mirror. Behind you, you hear it thank you for preventing it from looking at your stupid face anymore.",
                 "Run out in the hallway while crying","Tell the the reflection to fuck off and back off","Silently back away"));
 
+
         Main.setCurrentScene(Main.storyScenes.get("Entering bathroom"));
 
         if(Main.getCurrentScene() != null){Main.UpdateText();}

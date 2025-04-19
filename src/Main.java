@@ -29,6 +29,8 @@ public class Main {
     private static ArrayList<Room> rooms = new ArrayList<Room>();
     public static GameFrame frame;
 
+    private static boolean closeSystem = false;
+
     public static void main(String[] args)  {
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
@@ -56,6 +58,8 @@ public class Main {
         choiceOne.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if(closeSystem){System.exit(0);}
+
                 if(choiceOneRoomSwitch) {
                     currentRoom = choiceOneRoom;
                     ChooseRoom(currentRoom);
@@ -75,6 +79,7 @@ public class Main {
         choiceTwo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if(closeSystem){System.exit(0);}
                 if(choiceTwoRoomSwitch) {
                     currentRoom = choiceTwoRoom;
                     ChooseRoom(currentRoom);
@@ -94,6 +99,7 @@ public class Main {
         choiceThree.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if(closeSystem){System.exit(0);}
                 if(choiceThreeRoomSwitch) {
                     currentRoom = choiceThreeRoom;
                     ChooseRoom(currentRoom);
@@ -110,6 +116,14 @@ public class Main {
             }
         });
 
+        diceButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                getCurrentScene().Attack();
+            }
+
+        });
+
     }
 
     public static void setChoiceOne(ChoiceClass scene) {
@@ -118,6 +132,7 @@ public class Main {
     }
 
     public static void setChoiceOne(int scene) {
+        if(scene == -1){closeSystem = true;}
         choiceOneRoom = scene;
         choiceOneRoomSwitch = true;
     }
@@ -128,6 +143,7 @@ public class Main {
     }
 
     public static void setChoiceTwo(int scene) {
+        if(scene == -1){closeSystem = true;}
         choiceTwoRoom = scene;
         choiceTwoRoomSwitch = true;
     }
@@ -138,6 +154,7 @@ public class Main {
     }
 
     public static void setChoiceThree(int scene) {
+        if(scene == -1){closeSystem = true;}
         choiceThreeRoom = scene;
         choiceThreeRoomSwitch = true;
     }
@@ -192,6 +209,15 @@ public class Main {
 
     public static JButton getDiceButton(){
         return diceButton;
+    }
+
+    public static void FinishCombatScene(){
+        rooms.get(currentRoom).StartRoom();
+        UpdateText();
+        frame.refreshStoryLabel();
+        choiceOne.setEnabled(true);
+        choiceTwo.setEnabled(true);
+        choiceThree.setEnabled(true);
     }
 
 

@@ -1,20 +1,24 @@
 public class Player {
     private String name;
 
-    private final int maxHealth = 100;
+    private final int maxHealth = 20;
 
-    private int health;
-    private int strength;
+    private static int health;
+    private static int strength;
     private int agility;
     private int intelligence;
 
     private int coins;
 
-    public int getStrength() {
+    public static int getStrength() {
         return strength;
     }
 
-    public int getHealth() {
+    public static int getHealth() {
         return health;
+    }
+
+    public static void takeDamage(int damage) {
+        health -= damage;
     }
 }

@@ -35,13 +35,18 @@ public class GameFrame extends JFrame {
         playerStats.setBackground(Color.darkGray);
         playerStats.setBorder(new TitledBorder("<html> <font color=\"#ffffff\"> Player Stats </font> </html>"));
         playerStats.setLayout(new GridLayout(3, 1));
-        JTextField playerStatsField1 = new JTextField(50);
+
+        JTextArea playerStatsField1 = new JTextArea(1, 50);
         playerStatsField1.setBackground(Color.darkGray);
         playerStatsField1.setEditable(false);
         playerStats.add(playerStatsField1);
 
-        JTextField playerStatsField2 = new JTextField(50);
+        JTextArea playerStatsField2 = new JTextArea(1, 50);
+        playerStatsField2.setBorder(new TitledBorder("<html> <font color=\"#000000\"> player Statistics </font> </html>"));
         playerStatsField2.setBackground(Color.LIGHT_GRAY);
+        playerStatsField2.setEditable(false);
+        playerStatsField2.setFont(new Font("Ariel", Font.BOLD, 14));
+        playerStatsField2.setText(("Name: Larry \nStrength: 1"));
         playerStats.add(playerStatsField2);
 
         mainPanel.add(playerStats, BorderLayout.WEST);
@@ -49,18 +54,23 @@ public class GameFrame extends JFrame {
 
         //Dice Panel
         JPanel dicePanel = new JPanel();
-        dicePanel.setBorder(new TitledBorder("<html> <font color=\"#ffffff\"> Dice </font> </html>"));
+        dicePanel.setBorder(new TitledBorder("<html> <font color=\"#ffffff\"> Other </font> </html>"));
         dicePanel.setBackground(Color.darkGray);
         dicePanel.setLayout(new GridLayout(3, 1));
 
-        JTextField emptyDice = new JTextField(50);
-        emptyDice.setBackground(Color.darkGray);
-        emptyDice.setEditable(false);
-        dicePanel.add(emptyDice);
+        JTextArea enemyStats = new JTextArea(1, 50);
+        enemyStats.setBorder(new TitledBorder("<html> <font color=\"#ffffff\"> Enemy Stats </font> </html>"));
+        enemyStats.setBackground(Color.LIGHT_GRAY);
+        enemyStats.setEditable(false);
+        enemyStats.setFont(new Font("Ariel", Font.BOLD, 14));
+        enemyStats.setText(("Name: Confused cultist \nStrength: 356"));
+        dicePanel.add(enemyStats);
 
         dicePanel.add(Main.getDiceButton());
         Color color = new Color(150, 0, 0);
+        Color pressedColor = new Color(255, 255, 255, 255);
         Main.getDiceButton().setBackground(color);
+        Main.getDiceButton().setForeground(pressedColor);
 
         JTextField emptyDice2 = new JTextField(50);
         emptyDice2.setBackground(Color.darkGray);
@@ -158,6 +168,6 @@ public class GameFrame extends JFrame {
     }
     public void refreshStoryLabel()
     {
-        storyLabel.setText("<html> <div style='width:500px;'> " + Main.getStoryText().getText() + "</div> </html>");
+        storyLabel.setText("<html> <div style='width:500px;'>" + Main.getStoryText().getText() + "</div> </html>");
     }
 }

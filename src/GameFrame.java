@@ -116,9 +116,9 @@ public class GameFrame extends JFrame {
         c.anchor = GridBagConstraints.CENTER;
         storyPanel.add(buttonPanel, c);
 
-        Main.getChoiceOne().setFont(new Font("Arial", Font.BOLD, 20));
-        Main.getChoiceTwo().setFont(new Font("Arial", Font.BOLD, 20));
-        Main.getChoiceThree().setFont(new Font("Arial", Font.BOLD, 20));
+        Main.getChoiceOne().setFont(new Font("Arial", Font.BOLD, 15));
+        Main.getChoiceTwo().setFont(new Font("Arial", Font.BOLD, 15));
+        Main.getChoiceThree().setFont(new Font("Arial", Font.BOLD, 15));
 
         ActionListener updateStoryText = new ActionListener()
         {

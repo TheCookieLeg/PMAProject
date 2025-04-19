@@ -11,8 +11,14 @@ import java.awt.event.ActionEvent;
 public class Main {
     public static Map<String, ChoiceClass> storyScenes = new HashMap<String, ChoiceClass>();
 
+    public static ArrayList<String> items = new ArrayList<String>();
+
     private static ChoiceClass currentScene;
     private static int currentRoom = 0;
+
+    private static int choiceOneRoom, choiceTwoRoom, choiceThreeRoom;
+    private static ChoiceClass choiceOneScene, choiceTwoScene, choiceThreeScene;
+    private static boolean choiceOneRoomSwitch = false, choiceTwoRoomSwitch = false, choiceThreeRoomSwitch = false;
 
     private static JLabel storyText = new JLabel("Story Text");
     private static JButton choiceOne = new JButton("Choice 1");
@@ -21,7 +27,7 @@ public class Main {
 
     private static JButton diceButton = new JButton("Roll dice");
     private static ArrayList<Room> rooms = new ArrayList<Room>();
-    private static GameFrame frame;
+    public static GameFrame frame;
 
     public static void main(String[] args)  {
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
@@ -33,13 +39,107 @@ public class Main {
             }
         });
 
+        rooms.add(new FrontOfTheHouse());
         rooms.add(new Lobby());
-        rooms.add(new Room1());
-        rooms.add(new Room2());
+        rooms.add(new DinningRoom());
+        rooms.add(new Kitchen());
+        rooms.add(new UpstairsHallway());
+        rooms.add(new Bathroom());
+        rooms.add(new Bedroom());
+        rooms.add(new SecretBasement());
+        rooms.add(new PrisonCell());
+        rooms.add(new EndScene());
 
         rooms.get(0).PlayRoom();
 
 
+        choiceOne.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(choiceOneRoomSwitch) {
+                    currentRoom = choiceOneRoom;
+                    ChooseRoom(currentRoom);
+                    choiceOneRoomSwitch = false;
+                }
+                else
+                {
+                    currentScene = choiceOneScene;
+                }
+                rooms.get(currentRoom).StartRoom();
+                UpdateText();
+                frame.refreshStoryLabel();
+
+            }
+        });
+
+        choiceTwo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(choiceTwoRoomSwitch) {
+                    currentRoom = choiceTwoRoom;
+                    ChooseRoom(currentRoom);
+                    choiceTwoRoomSwitch = false;
+                }
+                else
+                {
+                    currentScene = choiceTwoScene;
+                }
+                rooms.get(currentRoom).StartRoom();
+                UpdateText();
+                frame.refreshStoryLabel();
+
+            }
+        });
+
+        choiceThree.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(choiceThreeRoomSwitch) {
+                    currentRoom = choiceThreeRoom;
+                    ChooseRoom(currentRoom);
+                    choiceThreeRoomSwitch = false;
+                }
+                else
+                {
+                    currentScene = choiceThreeScene;
+                }
+                rooms.get(currentRoom).StartRoom();
+                UpdateText();
+                frame.refreshStoryLabel();
+
+            }
+        });
+
+    }
+
+    public static void setChoiceOne(ChoiceClass scene) {
+        choiceOneScene = scene;
+        choiceOneRoomSwitch = false;
+    }
+
+    public static void setChoiceOne(int scene) {
+        choiceOneRoom = scene;
+        choiceOneRoomSwitch = true;
+    }
+
+    public static void setChoiceTwo(ChoiceClass scene) {
+        choiceTwoScene = scene;
+        choiceTwoRoomSwitch = false;
+    }
+
+    public static void setChoiceTwo(int scene) {
+        choiceTwoRoom = scene;
+        choiceTwoRoomSwitch = true;
+    }
+
+    public static void setChoiceThree(ChoiceClass scene) {
+        choiceThreeScene = scene;
+        choiceThreeRoomSwitch = false;
+    }
+
+    public static void setChoiceThree(int scene) {
+        choiceThreeRoom = scene;
+        choiceThreeRoomSwitch = true;
     }
 
 
@@ -48,120 +148,29 @@ public class Main {
         frame.refreshStoryLabel();
     }
 
-    public static boolean bool = true;
 
-    public static void setChoiceOne(ChoiceClass scene) {
-
-       bool = true;
-       choiceOne.addActionListener(new ActionListener() {
-           @Override
-           public void actionPerformed(ActionEvent e) {
-               if(bool) {
-                   currentScene = scene;
-                   UpdateText();
-                   System.out.println("Dialogue change");
-                   rooms.get(currentRoom).StartRoom();
-               }
-           }
-       });
-    }
-
-    public static void setChoiceOne(int scene) {
-
-        bool = false;
-        choiceOne.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(!bool) {
-                    System.out.println("Room change");
-                    currentRoom = scene;
-                    ChooseRoom(scene);
-                    rooms.get(currentRoom).StartRoom();
-                }
-
-            }
-        });
-    }
 
     public static JButton getChoiceOne() {
         return choiceOne;
     }
 
 
-    public static void setChoiceTwo(ChoiceClass scene) {
 
-        bool = true;
-        choiceTwo.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(bool) {
-                    currentScene = scene;
-                    UpdateText();
-                    rooms.get(currentRoom).StartRoom();
-                    System.out.println("Dialogue change");
-                }
-            }
-        });
-    }
-
-    public static void setChoiceTwo(int scene) {
-
-        bool = false;
-        choiceTwo.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(!bool) {
-                    System.out.println("Room change");
-                    ChooseRoom(scene);
-                    currentRoom = scene;
-                    rooms.get(currentRoom).StartRoom();
-                }
-
-            }
-        });
-    }
     public static JButton getChoiceTwo() {
         return choiceTwo;
     }
 
-    public static void setChoiceThree(ChoiceClass scene) {
 
-        bool = true;
-        choiceThree.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(bool) {
-                    currentScene = scene;
-                    UpdateText();
-                    rooms.get(currentRoom).StartRoom();
-                    System.out.println("Dialogue change");
-                }
-            }
-        });
-    }
-
-    public static void setChoiceThree(int scene) {
-
-        bool = false;
-        choiceThree.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(!bool) {
-                    System.out.println("Room change");
-                    ChooseRoom(scene);
-                    currentRoom = scene;
-                    rooms.get(currentRoom).StartRoom();
-                }
-
-            }
-        });
-    }
     public static JButton getChoiceThree() {
         return choiceThree;
     }
 
     public static JLabel getStoryText() {
         return storyText;
+    }
+
+    public static void setStoryText(String text) {
+        storyText.setText(text);
     }
 
     public static void UpdateText() {

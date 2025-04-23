@@ -18,11 +18,11 @@ public class Bathroom implements Room{
                 "Run out in the hallway while crying","Tell the the reflection to fuck off and back off","Silently back away"));
         Main.storyScenes.put("Post battle", new ChoiceClass("Phew, you survived that crazy lunatic somehow. But you got some food out of it at least, half a burrito. Also some key? You're not sure what this is for, but it gives bedroom vibes.",
                 "Burrito, Yum!", "Phew, close one", "This key looks interesting"));
-        Main.storyScenes.put("Confused Cultist Combat", new CombatScene("Confused cultist","You stand face to face with the confused cultist. That burrito sure does look appetizing.",10, 1, Main.storyScenes.get("Post battle")));
+        Main.storyScenes.put("Confused Cultist Combat", new CombatScene("Confused cultist","You stand face to face with the confused cultist. That burrito sure does look appetizing.",10, 10, Main.storyScenes.get("Post battle")));
 
         Main.setCurrentScene(Main.storyScenes.get("Entering bathroom"));
 
-        if(Main.getCurrentScene() != null){Main.UpdateText();}
+        if(Main.getCurrentScene() != null) {Main.UpdateText();}
 
 
     }
@@ -39,6 +39,16 @@ public class Bathroom implements Room{
             Main.setChoiceOne(Main.storyScenes.get("Opening the curtain"));
             Main.setChoiceTwo(Main.storyScenes.get("Yell"));
             Main.setChoiceThree(Main.storyScenes.get("Exploring the sink"));
+
+            if(hasFoughtSkeleton) {
+                Main.getCurrentScene().setStoryText("You look in the shower. That nasty lunatic is still lying there. After what you've experienced in this mansion, it comes as a surprise that he's actually dead. You don't want to spend any more time looking at him");
+                Main.getCurrentScene().setChoice1text("Go back");
+                Main.getCurrentScene().setChoice2text("Go back");
+                Main.getCurrentScene().setChoice3text("Go back");
+                Main.setChoiceOne(Main.storyScenes.get("Entering bathroom"));
+                Main.setChoiceTwo(Main.storyScenes.get("Entering bathroom"));
+                Main.setChoiceThree(Main.storyScenes.get("Entering bathroom"));
+            }
         }
 
         if(Main.getCurrentScene() == Main.storyScenes.get("Yell")) {

@@ -46,7 +46,7 @@ public class GameFrame extends JFrame {
         playerStatsField2.setBackground(Color.LIGHT_GRAY);
         playerStatsField2.setEditable(false);
         playerStatsField2.setFont(new Font("Ariel", Font.BOLD, 14));
-        playerStatsField2.setText(("Name: Larry \nStrength: 1"));
+        playerStatsField2.setText(("Name: Larry \nStrength: 10 \n NOT FUNCTIONAL YET"));
         playerStats.add(playerStatsField2);
 
         mainPanel.add(playerStats, BorderLayout.WEST);
@@ -63,7 +63,7 @@ public class GameFrame extends JFrame {
         enemyStats.setBackground(Color.LIGHT_GRAY);
         enemyStats.setEditable(false);
         enemyStats.setFont(new Font("Ariel", Font.BOLD, 14));
-        enemyStats.setText(("Name: Confused cultist \nStrength: 356"));
+        enemyStats.setText(("Name: Confused cultist \nStrength: 10 \n NOT FUNCTIONAL YET"));
         dicePanel.add(enemyStats);
 
         dicePanel.add(Main.getDiceButton());
@@ -112,11 +112,19 @@ public class GameFrame extends JFrame {
         // This panel is used to collect all buttons into one panel.
         JPanel buttonPanel = new JPanel();
         buttonPanel.setBackground(Color.DARK_GRAY);
-        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 0)); // spacing between buttons
+        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
 
-        // Add buttons to the sub-panel
+        // Center alignment for each button
+        Main.getChoiceOne().setAlignmentX(Component.CENTER_ALIGNMENT);
+        Main.getChoiceTwo().setAlignmentX(Component.CENTER_ALIGNMENT);
+        Main.getChoiceThree().setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        // Add buttons with spacing
+        buttonPanel.add(Box.createVerticalStrut(10));
         buttonPanel.add(Main.getChoiceOne());
+        buttonPanel.add(Box.createVerticalStrut(10));
         buttonPanel.add(Main.getChoiceTwo());
+        buttonPanel.add(Box.createVerticalStrut(10));
         buttonPanel.add(Main.getChoiceThree());
 
         // Add the sub-panel to the storyPanel

@@ -1,7 +1,7 @@
 public class Player {
     private String name;
 
-    private final int maxHealth = 20;
+    private static final int maxHealth = 20;
 
     private static int health = 20;
     private static int strength = 15;
@@ -17,6 +17,8 @@ public class Player {
     public static int getHealth() {
         return health;
     }
+
+    public static void RestoreHealth() {health = maxHealth;}
 
     public static void takeDamage(int damage) {
         health -= damage;

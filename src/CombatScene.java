@@ -46,13 +46,13 @@ public class CombatScene extends ChoiceClass {
         if(Player.getHealth() <= 0){
 
             Main.getCurrentScene().setChoice1text("Quit.. Like a loser");
-            Main.getCurrentScene().setChoice2text("Play again");
-            Main.getCurrentScene().setChoice3text("Come on... Play again");
+            Main.getCurrentScene().setChoice2text("Quit.. Like a hero");
+            Main.getCurrentScene().setChoice3text("Quit.. Like an average person");
             Main.UpdateText();
             Main.frame.storyLabel.setText("You died... Loser. Do you want to play again?");
             Main.setChoiceOne(-1);
-            Main.setChoiceTwo(0);
-            Main.setChoiceThree(0);
+            Main.setChoiceTwo(-1);
+            Main.setChoiceThree(-1);
             Main.getDiceButton().setEnabled(false);
             Main.getChoiceOne().setEnabled(true);
             Main.getChoiceTwo().setEnabled(true);
@@ -60,6 +60,7 @@ public class CombatScene extends ChoiceClass {
         }
         else if (enemyHealth <= 0) {
             Main.setCurrentScene(nextScene);
+            Player.RestoreHealth();
             Main.FinishCombatScene();
             Main.getDiceButton().setEnabled(false);
         }

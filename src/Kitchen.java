@@ -9,7 +9,7 @@ public class Kitchen implements Room {
                 "Take the crystal","Have a staring contest with the skeleton","Go back"));
         Main.storyScenes.put("Look at the carcasses", new ChoiceClass("It's just a bunch of carcasses. And they smell even worse up close. Please go back, it hurts my nose",
                 "Go back","Go back","Go back"));
-        Main.storyScenes.put("Taking important item", new ChoiceClass("You try to take the crystal from his hand. But his grip is strong. Wait, how is it strong? He's dead goddammit. After a bunch of tugging, you yell out in fury and kicked the arm holding the [IMPORTANT ITEM] with all your might. The arm breaks, and you get the [IMPORTANT ITEM]. You stare at the [ITEM] for a few seconds, but when you look back at the skeleton, it's turned to dust. Now the fridge is fully visible.",
+        Main.storyScenes.put("Taking important item", new ChoiceClass("You try to take the crystal from his hand. But his grip is strong. Wait, how is it strong? He's dead goddammit. After a bunch of tugging, you yell out in fury and kick the arm holding the crystal with all your might. The arm breaks, and you get the crystal. You stare at the crystal for a few seconds, but when you look back at the skeleton, it's turned to dust. Now the fridge is fully visible.",
                 "Go back","Open the fridge","Punch the fridge"));
         Main.storyScenes.put("Staring contest", new ChoiceClass("After sitting there for 10 minutes, you give up. That guy is a tough opponent. Maybe because he's dead or something. Was this really worth your time?",
                 "He was a worthy opponent","I won!!","He was stronger than expected..."));
@@ -17,6 +17,7 @@ public class Kitchen implements Room {
                 "Take it","Eat it","Close fridge"));
         Main.storyScenes.put("Punch fridge", new ChoiceClass("Your hand hurts now. Why would you do that???",
                 "Go back","Open fridge","Punch fridge"));
+
 
         Main.setCurrentScene(Main.storyScenes.get("Entering kitchen"));
 
@@ -30,17 +31,24 @@ public class Kitchen implements Room {
             Main.setChoiceTwo(Main.storyScenes.get("Inspecting skeleton"));
             Main.setChoiceThree(2);
 
-            if(beenInRoom){
-                Main.getCurrentScene().setStoryText("You find yourself back in the kitchen.");
+            if (Main.items.contains("Crystal"))
+            {
+                Main.getCurrentScene().setChoice2text("Investigate fridge");
+                Main.setChoiceTwo(Main.storyScenes.get("Taking important item"));
             }
+
+            if(beenInRoom){Main.getCurrentScene().setStoryText("You find yourself back in the kitchen.");}
 
             beenInRoom = true;
         }
 
         if(Main.getCurrentScene() == Main.storyScenes.get("Inspecting skeleton")) {
+
             Main.setChoiceOne(Main.storyScenes.get("Taking important item"));
             Main.setChoiceTwo(Main.storyScenes.get("Staring contest"));
             Main.setChoiceThree(Main.storyScenes.get("Entering kitchen"));
+
+
         }
 
         if(Main.getCurrentScene() == Main.storyScenes.get("Look at the carcasses")) {
@@ -50,8 +58,13 @@ public class Kitchen implements Room {
         }
 
         if(Main.getCurrentScene() == Main.storyScenes.get("Taking important item")) {
+
             if(!Main.items.contains("Crystal")) {
                 Main.items.add("Crystal");
+            }
+            else
+            {
+                Main.getCurrentScene().setStoryText("You stare at the fridge");
             }
             Main.setChoiceOne(Main.storyScenes.get("Entering kitchen"));
             Main.setChoiceTwo(Main.storyScenes.get("Opening fridge"));

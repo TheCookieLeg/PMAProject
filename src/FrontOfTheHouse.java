@@ -10,6 +10,7 @@ public class FrontOfTheHouse implements Room{
 
         if(Main.getCurrentScene() != null){Main.UpdateText();}
 
+        Main.RestartGame();
         StartRoom();
     }
     public void StartRoom(){

@@ -1,4 +1,7 @@
 public class Bathroom implements Room{
+
+    private boolean beenInRoom = false;
+    private boolean hasFoughtSkeleton = false;
     public void PlayRoom(){
         Main.storyScenes.clear();
         Main.storyScenes.put("Entering bathroom", new ChoiceClass("You enter the bathroom. The noise you heard from outside the hallway faded as you entered, leaving the room silent. Seems you are starting to get delusional. Inside, there is a shower cabin, a sink beneath a huge mirror and a toilet.",
@@ -13,7 +16,9 @@ public class Bathroom implements Room{
                 "Dad?","Are you... me?","You are so ugly"));
         Main.storyScenes.put("Mirror talking", new ChoiceClass("Hey dumb-dumb, your reflection quips. Finally found your way home, it states. You asks what it means by 'home' as you have never been here, and is actually investigating a case. The reflection tells you you should be investigating how you got so stupid. You tell the reflection that's really hurtful. It says you clearly haven't been hurt enough, since you are weird enough to be talking to a mirror. You suppress a tear and turn away from the mirror. Behind you, you hear it thank you for preventing it from looking at your stupid face anymore.",
                 "Run out in the hallway while crying","Tell the the reflection to fuck off and back off","Silently back away"));
-
+        Main.storyScenes.put("Post battle", new ChoiceClass("Phew, you survived that crazy lunatic somehow. But you got some food out of it at least, half a burrito. Also some key? You're not sure what this is for, but it gives bedroom vibes.",
+                "Burrito, Yum!", "Phew, close one", "This key looks interesting"));
+        Main.storyScenes.put("Confused Cultist Combat", new CombatScene("Confused cultist","You stand face to face with the confused cultist. That burrito sure does look appetizing.",10, 1, Main.storyScenes.get("Post battle")));
 
         Main.setCurrentScene(Main.storyScenes.get("Entering bathroom"));
 
@@ -22,8 +27,9 @@ public class Bathroom implements Room{
 
     }
     public void StartRoom(){
-
         if(Main.getCurrentScene() == Main.storyScenes.get("Entering bathroom")) {
+            if (beenInRoom) {Main.getCurrentScene().setStoryText("You find yourself back in the bathroom.");}
+            beenInRoom = true;
             Main.setChoiceOne(Main.storyScenes.get("Exploring the shower"));
             Main.setChoiceTwo(Main.storyScenes.get("Exploring the sink"));
             Main.setChoiceThree(4);
@@ -36,15 +42,15 @@ public class Bathroom implements Room{
         }
 
         if(Main.getCurrentScene() == Main.storyScenes.get("Yell")) {
-            // Combat scene -- Main.setChoiceOne(Main.storyScenes.get("Upstairs Hallway"));
-            // Combat scene -- Main.setChoiceTwo(Main.storyScenes.get("Upstairs Hallway"));
-            // Combat scene -- Main.setChoiceThree(Main.storyScenes.get("Upstairs Hallway"));
+            Main.setChoiceOne(Main.storyScenes.get("Confused Cultist Combat"));
+            Main.setChoiceTwo(Main.storyScenes.get("Confused Cultist Combat"));
+            Main.setChoiceThree(Main.storyScenes.get("Confused Cultist Combat"));
         }
 
         if(Main.getCurrentScene() == Main.storyScenes.get("Opening the curtain")) {
-            // Combat scene -- Main.setChoiceOne(Main.storyScenes.get("Upstairs Hallway"));
-            // Combat scene -- Main.setChoiceTwo(Main.storyScenes.get("Upstairs Hallway"));
-            // Combat scene -- Main.setChoiceThree(Main.storyScenes.get("Upstairs Hallway"));
+            Main.setChoiceOne(Main.storyScenes.get("Confused Cultist Combat"));
+            Main.setChoiceTwo(Main.storyScenes.get("Confused Cultist Combat"));
+            Main.setChoiceThree(Main.storyScenes.get("Confused Cultist Combat"));
         }
 
         if(Main.getCurrentScene() == Main.storyScenes.get("Exploring the sink")) {
@@ -55,6 +61,18 @@ public class Bathroom implements Room{
 
         if(Main.getCurrentScene() == Main.storyScenes.get("Mirror talking")) {
             Main.setChoiceOne(4);
+            Main.setChoiceTwo(Main.storyScenes.get("Entering bathroom"));
+            Main.setChoiceThree(Main.storyScenes.get("Entering bathroom"));
+        }
+
+        if(Main.getCurrentScene() == Main.storyScenes.get("Confused Cultist Combat")) {
+            Main.items.add("Bedroom Key");
+            hasFoughtSkeleton = true;
+            Main.getCurrentScene().InitiateCombat();
+        }
+
+        if (Main.getCurrentScene() == Main.storyScenes.get("Post battle")) {
+            Main.setChoiceOne(Main.storyScenes.get("Entering bathroom"));
             Main.setChoiceTwo(Main.storyScenes.get("Entering bathroom"));
             Main.setChoiceThree(Main.storyScenes.get("Entering bathroom"));
         }

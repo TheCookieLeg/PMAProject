@@ -14,6 +14,7 @@ public class Main {
     public static ArrayList<String> items = new ArrayList<String>();
 
     private static ChoiceClass currentScene;
+    private static CombatScene currentCombatScene;
     private static int currentRoom = 0;
 
     private static int choiceOneRoom, choiceTwoRoom, choiceThreeRoom;
@@ -29,7 +30,9 @@ public class Main {
     private static ArrayList<Room> rooms = new ArrayList<Room>();
     public static GameFrame frame;
 
-    private static boolean closeSystem = false;
+    private static boolean closeSystem1 = false;
+    private static boolean closeSystem2 = false;
+    private static boolean closeSystem3 = false;
 
     public static void main(String[] args)  {
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
@@ -58,7 +61,7 @@ public class Main {
         choiceOne.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(closeSystem){System.exit(0);}
+                if(closeSystem1){System.exit(0);}
 
                 if(choiceOneRoomSwitch) {
                     currentRoom = choiceOneRoom;
@@ -79,7 +82,7 @@ public class Main {
         choiceTwo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(closeSystem){System.exit(0);}
+                if(closeSystem2){System.exit(0);}
                 if(choiceTwoRoomSwitch) {
                     currentRoom = choiceTwoRoom;
                     ChooseRoom(currentRoom);
@@ -99,7 +102,7 @@ public class Main {
         choiceThree.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(closeSystem){System.exit(0);}
+                if(closeSystem3){System.exit(0);}
                 if(choiceThreeRoomSwitch) {
                     currentRoom = choiceThreeRoom;
                     ChooseRoom(currentRoom);
@@ -132,7 +135,7 @@ public class Main {
     }
 
     public static void setChoiceOne(int scene) {
-        if(scene == -1){closeSystem = true;}
+        if(scene == -1){closeSystem1 = true;}
         choiceOneRoom = scene;
         choiceOneRoomSwitch = true;
     }
@@ -143,7 +146,7 @@ public class Main {
     }
 
     public static void setChoiceTwo(int scene) {
-        if(scene == -1){closeSystem = true;}
+        if(scene == -1){closeSystem2 = true;}
         choiceTwoRoom = scene;
         choiceTwoRoomSwitch = true;
     }
@@ -154,7 +157,7 @@ public class Main {
     }
 
     public static void setChoiceThree(int scene) {
-        if(scene == -1){closeSystem = true;}
+        if(scene == -1){closeSystem3 = true;}
         choiceThreeRoom = scene;
         choiceThreeRoomSwitch = true;
     }
@@ -206,6 +209,8 @@ public class Main {
     public static ChoiceClass getCurrentScene() {
         return currentScene;
     }
+    public static CombatScene getCurrentCombatScene() {return currentCombatScene;}
+    public static void setCurrentCombatScene(CombatScene combatScene) {currentCombatScene = combatScene;}
 
     public static JButton getDiceButton(){
         return diceButton;
@@ -220,5 +225,13 @@ public class Main {
         choiceThree.setEnabled(true);
     }
 
+    public static void RestartGame()
+    {
+        closeSystem1 = false;
+        closeSystem2 = false;
+        closeSystem3 = false;
+
+        items.clear();
+    }
 
 }

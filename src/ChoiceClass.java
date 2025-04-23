@@ -44,4 +44,5 @@ public class ChoiceClass {
         return choice3text;
     }
 
+    public void InitiateCombat(){};
 }

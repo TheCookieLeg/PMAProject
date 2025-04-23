@@ -11,11 +11,11 @@ public class Lobby implements Room {
         Main.storyScenes.clear();
         Main.storyScenes.put("Intro", new ChoiceClass("Welcome to the story screen! Please type which room you would like to go to", "Room 1","Room 2", "Room 3"));
 
-        Main.storyScenes.put("After Entering", new ChoiceClass("You enter. Two things alert you to how big of a mistake that was. One, you hear a click as the door behind you locks on its own. Two, leaning against the wall lies the unmoving corpse of your buddy Will. Aside from those unpleasant details, you also notice a doorway to a dining room, and a flight of stairs, going up.",
-                "Investigate corpse / Investigate indent", "Go to dining room", "Go upstairs"));
-        Main.storyScenes.put("Finding dagger", new ChoiceClass("A dagger stick out from Will's shoulder, a trail of semi-dried blood seeping from the wound.",
+        Main.storyScenes.put("After Entering", new ChoiceClass("You enter. Two things alert you to how big of a mistake that was. One, you hear a click as the door behind you locks on its own. Two, leaning against the wall lies the unmoving corpse of your buddy, Will. Aside from those unpleasant details, you also notice a doorway to a dining room, and a flight of stairs, going up.",
+                "Investigate corpse", "Go to dining room", "Go upstairs"));
+        Main.storyScenes.put("Finding dagger", new ChoiceClass("A dagger sticks out from Will's shoulder, a trail of semi-dried blood seeping from the wound.",
                 "Go back", "Take dagger", "Try to wake him up"));
-        Main.storyScenes.put("Removing dagger", new ChoiceClass("[As you remove the dagger, Will's body leans to the side and you notice an indent in the wall behind him.] [There is an indent in the wall next to Will's corpse.] It is somewhat dagger-shaped. How convenient.",
+        Main.storyScenes.put("Removing dagger", new ChoiceClass("As you remove the dagger, Will's body leans to the side and you notice an indent in the wall behind him. It is somewhat dagger-shaped. How convenient.",
                 "Go back","Place dagger in indent","Investigate wall"));
         Main.storyScenes.put("Try waking him up", new ChoiceClass("Yup, he's dead. dead-dead. deaditty-dead. You are not waking this guy up.",
                 "","Continue",""));
@@ -25,11 +25,10 @@ public class Lobby implements Room {
                 "","Continue",""));
         Main.storyScenes.put("Placing dagger succesfully", new ChoiceClass("With the sheath and the crystal attached, the dagger fits perfectly. It clicks, and the wall starts turning, revealing another room behind it. You slip in as it turns, and find yourself at the top of a stairway, leading down. The wall settles into place behind you. The dagger is stuck inside the indent, it no longer responds to anything you do. The only way is down.",
                 "","Continue",""));
-        Main.storyScenes.put("Confused Cultist Combat", new CombatScene("Confused cultist","Attack",10, 10, Main.storyScenes.get("After Entering")));
 
 
-        //Main.setCurrentScene(Main.storyScenes.get("After Entering"));
-        Main.setCurrentScene(Main.storyScenes.get("Confused Cultist Combat"));
+
+        Main.setCurrentScene(Main.storyScenes.get("After Entering"));
 
         //if(Main.getCurrentScene() != null){Main.UpdateText();}
 
@@ -43,15 +42,16 @@ public class Lobby implements Room {
 
     public void StartRoom(){
         if(Main.getCurrentScene() == Main.storyScenes.get("Confused Cultist Combat")){
-
+            Main.storyScenes.get("Confused Cultist Combat").InitiateCombat();
         }
 
         if(Main.getCurrentScene() == Main.storyScenes.get("After Entering")) {
-
-            if(skeletonInvestigated) {
-
-            }
             Main.setChoiceOne(Main.storyScenes.get("Finding dagger"));
+            if(skeletonInvestigated) {
+                Main.setChoiceOne(Main.storyScenes.get("Removing dagger"));
+                Main.getCurrentScene().setChoice1text("Investigate indent");
+            }
+
             Main.setChoiceTwo(2);
             Main.setChoiceThree(4);
 
@@ -63,16 +63,19 @@ public class Lobby implements Room {
         }
 
         if(Main.getCurrentScene() == Main.storyScenes.get("Finding dagger")) {
-            skeletonInvestigated = true;
+
             Main.setChoiceOne(Main.storyScenes.get("After Entering"));
             Main.setChoiceTwo(Main.storyScenes.get("Removing dagger"));
             Main.setChoiceThree(Main.storyScenes.get("Try waking him up"));
         }
 
         if(Main.getCurrentScene() == Main.storyScenes.get("Removing dagger")) {
-            if(!Main.items.contains("Dagger")) {Main.items.add("Dagger");}
+            skeletonInvestigated = true;
 
-            Main.setChoiceOne(Main.storyScenes.get("Finding dagger"));
+            if(Main.items.contains("Dagger")) {Main.getCurrentScene().setStoryText("There is an indent in the wall next to Will's corpse. It is somewhat dagger-shaped. How convenient.");}
+
+            if(!Main.items.contains("Dagger")) {Main.items.add("Dagger");}
+            Main.setChoiceOne(Main.storyScenes.get("After Entering"));
             if(Main.items.contains("Sheath") && Main.items.contains("Crystal") && Main.items.contains("Dagger"))
             {
                 Main.setChoiceTwo(Main.storyScenes.get("Placing dagger succesfully"));

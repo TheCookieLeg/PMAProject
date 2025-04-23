@@ -3,8 +3,8 @@ public class Player {
 
     private final int maxHealth = 20;
 
-    private static int health;
-    private static int strength;
+    private static int health = 20;
+    private static int strength = 15;
     private int agility;
     private int intelligence;
 

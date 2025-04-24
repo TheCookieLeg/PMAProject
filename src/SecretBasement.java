@@ -54,8 +54,6 @@ public class SecretBasement implements Room{
         }
         if (Main.getCurrentScene() == Main.storyScenes.get("Try to leave")) {
             triedToLeave = true;
-            System.out.println(Main.getCurrentScene());
-            System.out.println(triedToLeave);
             Main.setChoiceOne(Main.storyScenes.get("Enter basement"));
             Main.setChoiceTwo(Main.storyScenes.get("Enter basement"));
             Main.setChoiceThree(Main.storyScenes.get("Enter basement"));

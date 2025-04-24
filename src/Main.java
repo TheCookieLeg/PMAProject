@@ -53,7 +53,6 @@ public class Main {
         rooms.add(new Bedroom());
         rooms.add(new SecretBasement());
         rooms.add(new PrisonCell());
-        rooms.add(new EndScene());
 
         rooms.get(0).PlayRoom();
 

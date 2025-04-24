@@ -39,12 +39,21 @@ public class UpstairsHallway implements Room{
             Main.setChoiceOne(Main.storyScenes.get("DoorLocked"));
             Main.setChoiceTwo(Main.storyScenes.get("Kicking the door"));
             Main.setChoiceThree(Main.storyScenes.get("Upstairs Hallway"));
+            if(Main.items.contains("Bedroom Key")) {
+                Main.setChoiceOne(6);
+            }
         }
 
         if(Main.getCurrentScene() == Main.storyScenes.get("Kicking the door")) {
             Main.setChoiceOne(Main.storyScenes.get("Infront of door"));
             Main.setChoiceTwo(Main.storyScenes.get("Kicking the door"));
             Main.setChoiceThree(Main.storyScenes.get("Upstairs Hallway"));
+        }
+
+        if(Main.getCurrentScene() == Main.storyScenes.get("DoorLocked")) {
+            Main.setChoiceOne(Main.storyScenes.get("Infront of door"));
+            Main.setChoiceTwo(Main.storyScenes.get("Infront of door"));
+            Main.setChoiceThree(Main.storyScenes.get("Infront of door"));
         }
     }
 }

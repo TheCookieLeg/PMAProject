@@ -20,7 +20,7 @@ public class Bedroom implements Room{
         Main.storyScenes.put("Just no", new ChoiceClass("Just.... no",
                 "Put the sheath on the knife handle","Put the sheath in your pants","Put the knife in the sheath"));
         Main.storyScenes.put("Completing the key", new ChoiceClass("Great! You put 2 and 2 together! Now you have a key. They usually unlock something",
-                "","Go back down stairs",""));
+                "","Go back to hallway",""));
 
         Main.setCurrentScene(Main.storyScenes.get("Entering bedroom"));
 
@@ -87,9 +87,9 @@ public class Bedroom implements Room{
             if(!Main.items.contains("Sheath")){
                 Main.items.add("Sheath");
             }
-            Main.setChoiceOne(1);
-            Main.setChoiceTwo(1);
-            Main.setChoiceThree(1);
+            Main.setChoiceOne(4);
+            Main.setChoiceTwo(4);
+            Main.setChoiceThree(4);
         }
     }
 

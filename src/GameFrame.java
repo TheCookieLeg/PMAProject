@@ -8,6 +8,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 public class GameFrame extends JFrame {
     JLabel storyLabel;
+    JTextArea enemyStats;
+    JTextArea playerStatsField;
     GameFrame gameFrame;
     public GameFrame() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -36,18 +38,18 @@ public class GameFrame extends JFrame {
         playerStats.setBorder(new TitledBorder("<html> <font color=\"#ffffff\"> Player Stats </font> </html>"));
         playerStats.setLayout(new GridLayout(3, 1));
 
-        JTextArea playerStatsField1 = new JTextArea(1, 50);
-        playerStatsField1.setBackground(Color.darkGray);
-        playerStatsField1.setEditable(false);
-        playerStats.add(playerStatsField1);
+        JTextArea EmptyField = new JTextArea(1, 50);
+        EmptyField.setBackground(Color.darkGray);
+        EmptyField.setEditable(false);
+        playerStats.add(EmptyField);
 
-        JTextArea playerStatsField2 = new JTextArea(1, 50);
-        playerStatsField2.setBorder(new TitledBorder("<html> <font color=\"#000000\"> player Statistics </font> </html>"));
-        playerStatsField2.setBackground(Color.LIGHT_GRAY);
-        playerStatsField2.setEditable(false);
-        playerStatsField2.setFont(new Font("Ariel", Font.BOLD, 14));
-        playerStatsField2.setText(("Name: Larry \nStrength: 10 \n NOT FUNCTIONAL YET"));
-        playerStats.add(playerStatsField2);
+        playerStatsField = new JTextArea(1, 50);
+        playerStatsField.setBorder(new TitledBorder("<html> <font color=\"#000000\"> player Statistics </font> </html>"));
+        playerStatsField.setBackground(Color.LIGHT_GRAY);
+        playerStatsField.setEditable(false);
+        playerStatsField.setFont(new Font("Ariel", Font.BOLD, 14));
+        playerStatsField.setText(("Name: Larry the detective \nHealth: " + Player.getHealth() + "\nStrength: " + Player.getStrength()));
+        playerStats.add(playerStatsField);
 
         mainPanel.add(playerStats, BorderLayout.WEST);
 
@@ -58,12 +60,12 @@ public class GameFrame extends JFrame {
         dicePanel.setBackground(Color.darkGray);
         dicePanel.setLayout(new GridLayout(3, 1));
 
-        JTextArea enemyStats = new JTextArea(1, 50);
+        enemyStats = new JTextArea(1, 50);
         enemyStats.setBorder(new TitledBorder("<html> <font color=\"#ffffff\"> Enemy Stats </font> </html>"));
         enemyStats.setBackground(Color.LIGHT_GRAY);
         enemyStats.setEditable(false);
         enemyStats.setFont(new Font("Ariel", Font.BOLD, 14));
-        enemyStats.setText(("Name: Confused cultist \nStrength: 10 \n NOT FUNCTIONAL YET"));
+        enemyStats.setText((""));
         dicePanel.add(enemyStats);
 
         dicePanel.add(Main.getDiceButton());

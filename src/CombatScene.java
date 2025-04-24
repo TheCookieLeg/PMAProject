@@ -19,6 +19,7 @@ public class CombatScene extends ChoiceClass {
         Main.getCurrentScene().setChoice1text("Combat");
         Main.getCurrentScene().setChoice2text("Combat");
         Main.getCurrentScene().setChoice3text("Combat");
+
     }
 
     public void Attack() {
@@ -28,21 +29,23 @@ public class CombatScene extends ChoiceClass {
         if (enemySuccesses > playerSuccesses) {
             damage = enemySuccesses - playerSuccesses;
             Player.takeDamage(damage);
-            combatText = "<html> <div style='width:500px;'>The " + enemyName + " hits you, dealing " + damage + " damage.</div> </html>";
+            combatText = "<html> <div style='width:500px;'> " + enemyName + " hits you, dealing " + damage + " damage.</div> </html>";
         }
         else if (playerSuccesses > enemySuccesses) {
             damage = playerSuccesses - enemySuccesses;
             enemyHealth -= damage;
-            combatText = "<html> <div style='width:500px;'>You hit the " + enemyName + ", dealing " + damage + " damage.</div> </html>";
+            combatText = "<html> <div style='width:500px;'>You hit " + enemyName + ", dealing " + damage + " damage.</div> </html>";
         }
         else {
             enemyHealth -= 1;
             Player.takeDamage(1);
-            combatText = "<html> <div style='width:500px;'>Both you and the " + enemyName + " get a hit in, and you both take 1 damage. </div> </html>";
+            combatText = "<html> <div style='width:500px;'>Both you and " + enemyName + " get a hit in, and you both take 1 damage. </div> </html>";
         }
-        //Main.getCurrentScene().setStoryText(combatText);
 
+        Main.frame.enemyStats.setText("Name: " + this.enemyName + "\nHealth: " + this.enemyHealth + "\nStrength: " + this.enemyStrength);
+        Main.frame.playerStatsField.setText("Name: Larry the detective" + "\nHealth: " + Player.getHealth() + "\nStrength: " + Player.getStrength());
         Main.frame.storyLabel.setText(combatText);
+
         if(Player.getHealth() <= 0){
 
             Main.getCurrentScene().setChoice1text("Quit.. Like a loser");
@@ -60,7 +63,9 @@ public class CombatScene extends ChoiceClass {
         }
         else if (enemyHealth <= 0) {
             Main.setCurrentScene(nextScene);
+            Main.frame.enemyStats.setText("");
             Player.RestoreHealth();
+            Main.frame.playerStatsField.setText("Name: Larry the detective" + "\nHealth: " + Player.getHealth() + "\nStrength: " + Player.getStrength());
             Main.FinishCombatScene();
             Main.getDiceButton().setEnabled(false);
         }
@@ -74,6 +79,7 @@ public class CombatScene extends ChoiceClass {
         Main.getChoiceThree().setEnabled(false);
         Main.getDiceButton().setEnabled(true);
         Main.setCurrentCombatScene(this);
+        Main.frame.enemyStats.setText("Name: " + this.enemyName + "\nHealth: " + this.enemyHealth + "\nStrength: " + this.enemyStrength);
     }
 
     //public void setStoryText(String storyText) {this.storyText = storyText;}

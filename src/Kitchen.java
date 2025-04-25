@@ -61,6 +61,7 @@ public class Kitchen implements Room {
 
             if(!Main.items.contains("Crystal")) {
                 Main.items.add("Crystal");
+                Main.updatePlayerText();
             }
             else
             {

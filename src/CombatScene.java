@@ -65,7 +65,8 @@ public class CombatScene extends ChoiceClass {
             Main.setCurrentScene(nextScene);
             Main.frame.enemyStats.setText("");
             Player.RestoreHealth();
-            Main.frame.playerStatsField.setText("Name: Larry the detective" + "\nHealth: " + Player.getHealth() + "\nStrength: " + Player.getStrength());
+            //Main.frame.playerStatsField.setText("Name: Larry the detective" + "\nHealth: " + Player.getHealth() + "\nStrength: " + Player.getStrength()+"\n\nInventory:");
+            Main.updatePlayerText();
             Main.FinishCombatScene();
             Main.getDiceButton().setEnabled(false);
         }

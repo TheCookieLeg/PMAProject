@@ -48,7 +48,7 @@ public class GameFrame extends JFrame {
         playerStatsField.setBackground(Color.LIGHT_GRAY);
         playerStatsField.setEditable(false);
         playerStatsField.setFont(new Font("Ariel", Font.BOLD, 14));
-        playerStatsField.setText(("Name: Larry the detective \nHealth: " + Player.getHealth() + "\nStrength: " + Player.getStrength()));
+        playerStatsField.setText("Name: Larry the detective \nHealth: " + Player.getHealth() + "\nStrength: " + Player.getStrength() +"\n\nInventory:");
         playerStats.add(playerStatsField);
 
         mainPanel.add(playerStats, BorderLayout.WEST);
@@ -73,6 +73,7 @@ public class GameFrame extends JFrame {
         Color pressedColor = new Color(255, 255, 255, 255);
         Main.getDiceButton().setBackground(color);
         Main.getDiceButton().setForeground(pressedColor);
+        Main.getDiceButton().setFont(new Font("Ariel", Font.BOLD, 50));
 
         JTextField emptyDice2 = new JTextField(50);
         emptyDice2.setBackground(Color.darkGray);

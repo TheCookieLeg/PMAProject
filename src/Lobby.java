@@ -30,14 +30,6 @@ public class Lobby implements Room {
 
         Main.setCurrentScene(Main.storyScenes.get("After Entering"));
 
-        //if(Main.getCurrentScene() != null){Main.UpdateText();}
-
-        /*if(Main.getCurrentScene() == Main.storyScenes.get("After Entering")){
-            Main.setChoiceOne(1);
-        }*/
-
-
-
     }
 
     public void StartRoom(){
@@ -74,7 +66,11 @@ public class Lobby implements Room {
 
             if(Main.items.contains("Dagger")) {Main.getCurrentScene().setStoryText("There is an indent in the wall next to Will's corpse. It is somewhat dagger-shaped. How convenient.");}
 
-            if(!Main.items.contains("Dagger")) {Main.items.add("Dagger");}
+            if(!Main.items.contains("Dagger"))
+            {
+                Main.items.add("Dagger");
+                Main.updatePlayerText();
+            }
             Main.setChoiceOne(Main.storyScenes.get("After Entering"));
             if(Main.items.contains("Sheath") && Main.items.contains("Crystal") && Main.items.contains("Dagger"))
             {

@@ -72,6 +72,9 @@ public class PrisonCell implements Room{
 
         if(Main.getCurrentScene() == Main.storyScenes.get("Take jar")) {
             puzzleItem = "jar with body part";
+            Main.items.add("jar with body part");
+            if(Main.items.contains("vial of your own blood")) {Main.items.remove("vial of your own blood");}
+            Main.updatePlayerText();
             Main.setChoiceOne(Main.storyScenes.get("Enter cell"));
             Main.setChoiceTwo(Main.storyScenes.get("Extract blood"));
             Main.setChoiceThree(Main.storyScenes.get("Investigate furnace"));
@@ -79,6 +82,9 @@ public class PrisonCell implements Room{
 
         if(Main.getCurrentScene() == Main.storyScenes.get("Extract blood")) {
             puzzleItem = "vial of your own blood";
+            Main.items.add("vial of your own blood");
+            if(Main.items.contains("jar with body part")) {Main.items.remove("jar with body part");}
+            Main.updatePlayerText();
             Main.setChoiceOne(Main.storyScenes.get("Enter cell"));
             Main.setChoiceTwo(Main.storyScenes.get("Take jar"));
             Main.setChoiceThree(Main.storyScenes.get("Investigate furnace"));

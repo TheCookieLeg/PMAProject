@@ -233,4 +233,15 @@ public class Main {
         items.clear();
     }
 
+    public static void updatePlayerText() {
+
+        String playerStatsText = "Name: Larry the detective" + "\nHealth: " + Player.getHealth() + "\nStrength: " + Player.getStrength()+"\n\nInventory:" ;
+        String updatedInventoryText = "";
+
+        for(int i = 0; i < items.size(); i++){
+            updatedInventoryText += "\n- " + items.get(i);
+        }
+        frame.playerStatsField.setText(playerStatsText + updatedInventoryText);
+    }
+
 }

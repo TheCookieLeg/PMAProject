@@ -77,6 +77,7 @@ public class Bathroom implements Room{
 
         if(Main.getCurrentScene() == Main.storyScenes.get("Confused Cultist Combat")) {
             Main.items.add("Bedroom Key");
+            Main.updatePlayerText();
             hasFoughtSkeleton = true;
             Main.getCurrentScene().InitiateCombat();
         }

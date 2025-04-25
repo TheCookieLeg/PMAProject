@@ -116,7 +116,7 @@ public class PrisonCell implements Room{
         }
 
         if(Main.getCurrentScene() == Main.storyScenes.get("Investigate cell final")) {
-            Main.setChoiceOne(9);
+            Main.setChoiceOne(Main.storyScenes.get("End"));
             Main.setChoiceTwo(Main.storyScenes.get("No escape"));
             Main.setChoiceThree(Main.storyScenes.get("No escape"));
         }

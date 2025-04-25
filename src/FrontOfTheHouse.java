@@ -23,11 +23,6 @@ public class FrontOfTheHouse implements Room{
         }
 
         if(Main.getCurrentScene() == Main.storyScenes.get("Standing in front of mansion")) {
-            //TBD
-            Main.items.add("Dagger");
-            Main.items.add("Crystal");
-            Main.items.add("Sheath");
-
             Main.setChoiceOne(1);
             Main.setChoiceTwo(1);
             Main.setChoiceThree(1);

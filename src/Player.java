@@ -14,7 +14,7 @@ public class Player {
         return health;
     }
 
-    public static void RestoreHealth() {health = MAX_HEALTH;}
+    public static void restoreHealth() {health = MAX_HEALTH;}
 
     public static void takeDamage(int damage) {
         health -= damage;

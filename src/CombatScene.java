@@ -64,7 +64,7 @@ public class CombatScene extends ChoiceClass {
         else if (enemyHealth <= 0) {
             Main.setCurrentScene(nextScene);
             Main.frame.enemyStats.setText("");
-            Player.RestoreHealth();
+            Player.restoreHealth();
             //Main.frame.playerStatsField.setText("Name: Larry the detective" + "\nHealth: " + Player.getHealth() + "\nStrength: " + Player.getStrength()+"\n\nInventory:");
             Main.updatePlayerText();
             Main.FinishCombatScene();

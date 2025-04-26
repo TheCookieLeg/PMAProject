@@ -208,7 +208,6 @@ public class Main {
     public static ChoiceClass getCurrentScene() {
         return currentScene;
     }
-    public static CombatScene getCurrentCombatScene() {return currentCombatScene;}
     public static void setCurrentCombatScene(CombatScene combatScene) {currentCombatScene = combatScene;}
 
     public static JButton getDiceButton(){

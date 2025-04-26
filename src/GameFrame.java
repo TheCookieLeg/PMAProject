@@ -7,14 +7,12 @@ import javax.swing.border.TitledBorder;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 public class GameFrame extends JFrame {
-    JLabel storyLabel;
-    JTextArea enemyStats;
-    JTextArea playerStatsField;
-    GameFrame gameFrame;
+    public JLabel storyLabel;
+    public JTextArea enemyStats;
+    public JTextArea playerStatsField;
     public GameFrame() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(800, 600);
-        gameFrame = this;
 
         //Main panel
         JPanel mainPanel = new JPanel();

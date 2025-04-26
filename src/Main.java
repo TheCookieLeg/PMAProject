@@ -223,15 +223,6 @@ public class Main {
         choiceThree.setEnabled(true);
     }
 
-    public static void RestartGame()
-    {
-        closeSystem1 = false;
-        closeSystem2 = false;
-        closeSystem3 = false;
-
-        items.clear();
-    }
-
     public static void updatePlayerText() {
 
         String playerStatsText = "Name: Larry the detective" + "\nHealth: " + Player.getHealth() + "\nStrength: " + Player.getStrength()+"\n\nInventory:" ;

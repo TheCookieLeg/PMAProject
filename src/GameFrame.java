@@ -77,13 +77,6 @@ public class GameFrame extends JFrame {
         emptyDice2.setBackground(Color.darkGray);
         emptyDice2.setEditable(false);
         dicePanel.add(emptyDice2);
-                /*
-                JLabel diceLabel = new JLabel("Dice");
-                JButton diceButton = new JButton("Roll dice");
-
-                dicePanel.add(diceLabel);
-                dicePanel.add(diceButton);
-                diceButton.setSize(200, 200);*/
         mainPanel.add(dicePanel, BorderLayout.EAST);
 
         //Story Panel
@@ -93,9 +86,6 @@ public class GameFrame extends JFrame {
         Main.getStoryText().setFont(new Font("Arial", Font.BOLD, 20));
 
         storyPanel.setLayout(new GridBagLayout());
-
-        //GroupLayout layout = new GroupLayout(storyPanel);
-        //storyPanel.setLayout(layout);
 
 
         GridBagConstraints c = new GridBagConstraints();
@@ -153,25 +143,6 @@ public class GameFrame extends JFrame {
 
         mainPanel.add(storyPanel, BorderLayout.CENTER);
 
-
-
-                /*layout.setAutoCreateGaps(true);
-                layout.setAutoCreateContainerGaps(true);
-
-                layout.setHorizontalGroup(layout.createSequentialGroup()
-                        .addComponent(choiceOne)
-                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
-                                .addComponent(storyText)
-                                .addComponent(choiceTwo))
-                        .addComponent(choiceThree)
-                );
-
-                layout.setVerticalGroup(layout.createSequentialGroup()
-                        .addComponent(storyText)
-                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
-                                .addComponent(choiceOne)
-                                .addComponent(choiceTwo)
-                                .addComponent(choiceThree)));*/
         this.pack();
 
     }

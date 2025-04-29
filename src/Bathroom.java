@@ -18,7 +18,7 @@ public class Bathroom implements Room{
                 "Run out in the hallway while crying","Tell the the reflection to fuck off and back off","Silently back away"));
         Main.storyScenes.put("Post battle", new ChoiceClass("Phew, you survived that crazy lunatic somehow. But you got some food out of it at least, half a burrito. Also some key? You're not sure what this is for, but it gives bedroom vibes.",
                 "Burrito, Yum!", "Phew, close one", "This key looks interesting"));
-        Main.storyScenes.put("Confused Cultist Combat", new CombatScene("The confused cultist","You stand face to face with the confused cultist. That burrito sure does look appetizing.",1, 10, Main.storyScenes.get("Post battle")));
+        Main.storyScenes.put("Confused Cultist Combat", new CombatScene("The confused cultist","You stand face to face with the confused cultist. That burrito sure does look appetizing.",10, 10, Main.storyScenes.get("Post battle")));
 
         Main.setCurrentScene(Main.storyScenes.get("Entering bathroom"));
 

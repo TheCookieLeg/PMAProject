@@ -1,2 +1,2 @@
 # PMAProject
- Project for the course "Programming of mobile applications" at university
+ Project for the course "Programming of mobile applications" at AAU
